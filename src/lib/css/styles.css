@@ -1,0 +1,57 @@
+@font-face {
+    font-family: "Gilroy";
+    font-weight: 400;
+    font-style: normal;
+    src: url("/font/gilroy-regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: 300;
+    font-style: normal;
+    src: url("/font/gilroy-light.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: 500;
+    font-style: normal;
+    src: url("/font/gilroy-medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: 700;
+    font-style: normal;
+    src: url("/font/gilroy-bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Gilroy";
+    font-weight: 900;
+    font-style: normal;
+    src: url("/font/gilroy-heavy.woff2") format("woff2");
+}
+
+.heading-1 {
+    @apply mb-4 text-4xl font-extrabold leading-none text-white md:text-5xl lg:text-6xl
+}
+.heading-2 {
+    @apply text-4xl font-bold text-white;
+}
+.heading-3 {
+    @apply text-3xl font-bold text-white;
+}
+.heading-4 {
+    @apply text-2xl font-bold text-white;
+}
+.heading-5 {
+    @apply text-xl font-bold text-white;
+}
+.heading-6 {
+    @apply text-lg font-bold text-white;
+}
+
+:root {
+    --b3: 221 39% 25%
+}
