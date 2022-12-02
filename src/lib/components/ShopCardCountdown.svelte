@@ -4,7 +4,7 @@
     export let small = false
 </script>
 
-<div class="w-100 h-full flex justify-center items-center">
+<div class="w-100 mt-2 h-full flex justify-center items-center">
     {#if date}
         <Countdown from={date} dateFormat="YYYY-MM-DD H:m:s" zone="Europe/London" let:remaining>
             {#if remaining.done === false}
