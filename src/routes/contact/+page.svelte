@@ -7,7 +7,7 @@
         <div class="order-card max-w-xl w-full">
             <h1 class="heading-1 mb-0">Contact Us</h1>
             <p class="text-lg mb-2">We'd love to hear from you!</p>
-            <div class="flex flex-row justify-between items-center">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                 <a class="btn btn-primary" href="mailto:hello@bambuild.ml">
                     <i class="mr-2 text-xl fas fa-envelope"></i>Email Us
                 </a>
