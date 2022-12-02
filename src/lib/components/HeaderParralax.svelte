@@ -24,24 +24,23 @@
         @apply absolute;
     }
 
-    #header-image-9 { animation: breathe 10s ease-in-out infinite; animation-delay: 3.5s; }
-    #header-image-8 { animation: breathe 10s ease-in-out infinite; animation-delay: 3.0s; }
-    #header-image-7 { animation: breathe 10s ease-in-out infinite; animation-delay: 2.5s; }
-    #header-image-6 { animation: breathe 10s ease-in-out infinite; animation-delay: 2.0s; }
-    #header-image-5 { animation: breathe 10s ease-in-out infinite; animation-delay: 1.5s; }
-    #header-image-4 { animation: breathe 10s ease-in-out infinite; animation-delay: 1.0s; }
-    #header-image-3 { animation: breathe 10s ease-in-out infinite; animation-delay: 0.5s; }
-    #header-image-2 { animation: breathe 10s ease-in-out infinite; animation-delay: 0.0s; }
+    #header-image-8 { animation: breathe-sm 10s ease-in-out infinite; animation-delay: 4.5s; }
+    #header-image-7 { animation: breathe-lg 10s ease-in-out infinite; animation-delay: 4.0s; }
+    #header-image-6 { animation: breathe-lg 10s ease-in-out infinite; animation-delay: 3.0s; }
+    #header-image-5 { animation: breathe-lg 10s ease-in-out infinite; animation-delay: 2.0s; }
+    #header-image-4 { animation: breathe-sm 10s ease-in-out infinite; animation-delay: 1.0s; }
+    #header-image-3 { animation: breathe-sm 10s ease-in-out infinite; animation-delay: 0.5s; }
+    #header-image-2 { animation: breathe-sm 10s ease-in-out infinite; animation-delay: 0.0s; }
 
-    @keyframes breathe {
-        0% {
-            transform: scale(1);
-        }
-        50% {
-            transform: scale(1.05);
-        }
-        100% {
-            transform: scale(1);
-        }
+    @keyframes breathe-sm {
+        0%   {transform: scale(1) }
+        50%  {transform: scale(1.05) }
+        100% {transform: scale(1) }
+    }
+
+    @keyframes breathe-lg {
+        0%   {transform: scale(1) }
+        50%  {transform: scale(1.1) }
+        100% {transform: scale(1) }
     }
 </style>
