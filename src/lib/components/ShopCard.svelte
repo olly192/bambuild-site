@@ -8,7 +8,7 @@
     export let small = false
 </script>
 
-<div class="rounded-lg shadow-md bg-gray-800 border-gray-700 flex flex-col justify-between" style="grid-column: span {columns}">
+<div class="rounded-lg shadow-md bg-gray-800 border-gray-700 flex flex-col justify-between max-w-2xl" style="grid-column: span {columns}">
     {#if link}
         <a href={link} class="h-full">
             <slot name="header">
