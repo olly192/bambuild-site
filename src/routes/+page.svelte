@@ -40,8 +40,12 @@
                             <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>
                             <img src="/images/lightbox/model1.png" alt="Light Box" class="hidden md:block product-image"/>
                         </div>
-                        <p class="font-bold">Currently on pre-order, expected delivery date: 12/12/2022</p>
-                        <p>The BamBuild light box bundle includes our bamboo, self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
+                        <p class="font-bold">Currently on pre-order, expected delivery: 12/12/2022</p>
+                        <p class="hidden md:block">The BamBuild light box bundle includes our bamboo, self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
+                        <p class="md:hidden">
+                            The BamBuild light box bundle includes our bamboo, self-assembled light box...<br>
+                            <a class="link link-primary" href="/shop">Read More</a>
+                        </p>
                     </ShopCard>
                 </div>
             </div>
