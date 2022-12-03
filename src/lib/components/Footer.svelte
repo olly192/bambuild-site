@@ -18,14 +18,14 @@
     </div>
     <div class="md:col-span-2 md:order-8 lg:order-1">
         <span class="footer-title mb-0">Shop</span>
-        <a class="link link-hover">Light Box</a>
-        <a class="link link-hover">Acrylic Inserts</a>
-        <a class="link link-hover">Replacement Parts</a>
+        <a class="link link-hover" href="/shop/product/lightbox/christmas-bundle">Light Box</a>
+        <a class="link link-hover" href="/shop">Acrylic Inserts</a>
+        <a class="link link-hover" href="/shop">Replacement Parts</a>
     </div>
     <div class="md:col-span-2 md:order-7 lg:order-2">
         <span class="footer-title mb-0">Company</span>
         <a class="link link-hover">About us</a>
-        <a class="link link-hover">Contact</a>
+        <a class="link link-hover" href="/contact">Contact</a>
         <a class="link link-hover">FAQ</a>
     </div>
     <div class="md:col-span-2 md:order-6 lg:order-3">
