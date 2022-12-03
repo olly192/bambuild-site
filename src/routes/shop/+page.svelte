@@ -30,7 +30,7 @@ import Alert from "$lib/components/Alert.svelte";
             <ShopCard title="Premium Light Box Bundle" columns="2">
                 <span slot="price">£24.99</span>
                 <ShopCardCountdown slot="header"/>
-                Hello World
+                Our premium light box. Coming soon...
             </ShopCard>
         </div>
     </div>
