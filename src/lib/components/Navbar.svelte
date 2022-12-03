@@ -19,7 +19,10 @@
                         <i class="fas fa-bars text-xl"></i>
                     </label>
                 </div>
-                <a class="btn btn-ghost normal-case text-xl" href="/">BamBuild</a>
+                <a class="btn btn-ghost normal-case text-xl" href="/">
+                    <img class="w-10 h-10" src="/images/logo.png">
+                    BamBuild
+                </a>
             </div>
             <div class="navbar-center hidden md:flex">
                 <ul class="menu menu-horizontal p-0">

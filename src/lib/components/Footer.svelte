@@ -5,7 +5,7 @@
 <footer class={homepage ? 'pl-16' : 'pl-5'} class:md:pl-28={homepage} style="background: hsl(221, 39%, 5%)">
     <div class="footer-info md:order-1">
         <div class="flex flex-row items-center">
-            <i class="text-6xl fa-solid fa-image"></i>
+            <img class="w-32 h-32" src="/images/logo.png">
             <div class="ml-4">
                 <h4 class="text-2xl font-bold text-primary-400">BamBuild</h4>
                 <p class="mt-0 font-medium text-gray-100">Creating sustainable products from bamboo</p>

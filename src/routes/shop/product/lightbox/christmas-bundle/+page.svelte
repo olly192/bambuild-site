@@ -198,11 +198,11 @@
                     </select>
                 </label>
                 {#if shippingMethod === "0"}
-                <div class="flex gap-4">
+                <div class="flex flex-col md:flex-row gap-4">
                     <label class="w-full mt-2 text-sm font-medium text-white">Student Full Name
                         <input type="text" bind:value={shippingName} placeholder="Full Name">
                     </label>
-                    <label class="w-1/3 mt-2 text-sm font-medium text-white">Student Form
+                    <label class="md:w-1/3 mt-2 text-sm font-medium text-white">Student Form
                         <input type="text" bind:value={shippingForm} placeholder="Form">
                     </label>
                 </div>
