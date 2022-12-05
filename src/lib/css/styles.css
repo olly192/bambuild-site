@@ -53,5 +53,7 @@
 }
 
 :root {
-    --b3: 221 39% 25%
+    --b3: 221 39% 25%;
+    --sc-color-rgb-light: #ffffff !important;
+    --sc-color-rgb-light-50p: rgba(255, 255, 255, 0.75) !important;
 }

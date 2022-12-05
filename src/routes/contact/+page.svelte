@@ -11,7 +11,7 @@
                 <a class="btn btn-primary" href="mailto:hello@bambuild.ml">
                     <i class="mr-2 text-xl fas fa-envelope"></i>Email Us
                 </a>
-                <a class="btn btn-primary" href="https://instagram.com/csgs.youngenterprises" target="_blank">
+                <a class="btn btn-primary" href="https://instagram.com/bambuild.ye" target="_blank">
                     <i class="mr-2 text-xl fab fa-instagram"></i> Instagram
                 </a>
                 <a class="btn btn-primary" href="https://www.tiktok.com/@bambuild.ye" target="_blank">
