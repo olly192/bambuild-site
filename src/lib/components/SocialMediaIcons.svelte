@@ -2,7 +2,7 @@
 </script>
 
 <div id="social-media-container">
-    <a href="https://instagram.com/csgs.youngenterprises" target="_blank">
+    <a href="https://instagram.com/bambuild.ye" target="_blank">
         <i class="fab fa-instagram"></i>
     </a>
     <a href="https://www.tiktok.com/@bambuild.ye" target="_blank">

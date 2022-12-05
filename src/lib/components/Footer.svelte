@@ -37,7 +37,7 @@
     <div class="md:col-span-1 md:order-5 lg:order-4">
         <span class="footer-title mb-0">Social</span>
         <div class="flex flex-row gap-4 text-2xl">
-            <a href="https://instagram.com/csgs.youngenterprises" target="_blank">
+            <a href="https://instagram.com/bambuild.ye" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com/@bambuild.ye" target="_blank">
