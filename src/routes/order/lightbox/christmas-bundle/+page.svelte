@@ -30,13 +30,16 @@
     let shippingMethod
     let shippingName
     let shippingForm
-    let errorRetried = false
-    let errorRetriedMessage = false
+    let errorRetriedSubmit = false
+    let errorRetriedSubmitMessage = false
+    let errorRetriedLink = false
+    let errorRetriedLinkMessage = false
     $: emailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/g.test(email)
     let purchased = false
     let orderNumber = ""
     $: orderNumValid = /^[0-9]{4}$/g.test(orderNumber)
     let step = 0
+    let orderIdentifier = ""
 
     let insertData = {
         // 'insert-1': {
@@ -66,16 +69,26 @@
             "firstName": firstName,
             "lastName": lastName,
             "shippingMethod": shippingMethod,
-            "shippingDetails": shippingMethod === "0" ? `Deliver to ${shippingName}, ${shippingForm}` : "Delivery",
-            "orderNumber": orderNumber
+            "shippingDetails": shippingMethod === "0" ? `Deliver to ${shippingName}, ${shippingForm}` : "Delivery"
         }
     }
 
-    $: b64data = btoa(JSON.stringify(formatData(), null, 4))
+    function generateB64Data() {
+        return btoa(JSON.stringify(formatData(), null, 4))
+    }
 
-    const copyErrorCode = async () => {
+    const copyCustomisationCode = async () => {
         try {
-            await navigator.clipboard.writeText(b64data);
+            await navigator.clipboard.writeText(generateB64Data());
+            console.log('Content copied to clipboard');
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+        }
+    }
+
+    const copyOrderDetails = async () => {
+        try {
+            await navigator.clipboard.writeText("Order Identifier: {orderIdentifier}\nYE Order Number: {orderNumber}");
             console.log('Content copied to clipboard');
         } catch (err) {
             console.error('Failed to copy: ', err);
@@ -84,12 +97,7 @@
 
     function submitOrder() {
         let data = formatData()
-        let endpoint
-        if (env.PUBLIC_ENVIRONMENT === "dev") {
-            endpoint = `${env.PUBLIC_API_URL}/api/submit-order-dev/christmas-bundle`
-        } else {
-            endpoint = `${env.PUBLIC_API_URL}/api/submit-order/christmas-bundle`
-        }
+        let endpoint = `${env.PUBLIC_API_URL}/api/create-order/christmas-bundle`
         fetch(endpoint, {
             method: "POST",
             headers: {
@@ -98,18 +106,54 @@
             body: JSON.stringify(data)
         }).then(res => {
             if (res.status === 200) {
-                step = 5
+                res.json().then(data => {
+                    console.log(data)
+                    orderIdentifier = data.identifier
+                    step = 3
+                })
             } else {
-                step = 4
+                step = 2
             }
+        }).catch(err => {
+            step = 2
         })
     }
 
-    function retryOrder() {
-        errorRetried = true
+    function linkOrder() {
+        let endpoint = `${env.PUBLIC_API_URL}/api/link-order`
+        fetch(endpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "identifier": orderIdentifier,
+                "orderNumber": orderNumber
+            })
+        }).then(res => {
+            if (res.status === 200) {
+                step = 6
+            } else {
+                step = 5
+            }
+        }).catch(err => {
+            step = 2
+        })
+    }
+
+    function retrySubmitOrder() {
+        errorRetriedSubmit = true
         submitOrder()
         setTimeout(() => {
-            errorRetriedMessage = true
+            errorRetriedSubmitMessage = true
+        }, 2000)
+    }
+
+    function retryLinkOrder() {
+        errorRetriedLink = true
+        linkOrder()
+        setTimeout(() => {
+            errorRetriedLinkMessage = true
         }, 2000)
     }
 </script>
@@ -120,14 +164,18 @@
         <ul class="steps steps-vertical md:steps-horizontal">
             <li class="step" class:step-primary={step >= 0}>Customise</li>
             <li class="step" class:step-primary={step >= 1}>Confirm details</li>
-            <li class="step" class:step-primary={step >= 2}>Purchase</li>
-            <li class="step" class:step-primary={step >= 3}>Link order</li>
+            {#if step === 2 }
+                <li class="step step-error">Error</li>
+            {/if}
+            <li class="step" class:step-primary={step >= 3}>Purchase</li>
+            <li class="step" class:step-primary={step >= 4}>Link order</li>
             {#if step === 4 }
                 <li class="step step-error">Error</li>
             {/if}
-            <li class="step" class:step-primary={step >= 5}>Order confirmed</li>
+            <li class="step" class:step-primary={step >= 6}>Order confirmed</li>
         </ul>
     </div>
+    <!-- Order Customisation -->
     {#if step === 0}
         <div id="product-main">
             <div id="preview-container">
@@ -209,6 +257,7 @@
             </div>
         </div>
     {/if}
+    <!-- Confirm Details -->
     {#if step === 1}
         <div class="card-container">
             <div class="order-card">
@@ -271,7 +320,7 @@
                     <button class="btn btn-secondary mt-4" on:click={() => step = 0}>
                         <i class="mr-2 fas fa-arrow-left"></i> Back
                     </button>
-                    <button class="btn btn-primary mt-4" on:click={() => step = 2}
+                    <button class="btn btn-primary mt-4" on:click={submitOrder}
                             disabled={!(emailValid && firstName && lastName && ((shippingMethod === "0" && shippingName && shippingForm) || shippingMethod === "1"))}>
                         Next <i class="ml-2 fas fa-arrow-right"></i>
                     </button>
@@ -279,63 +328,9 @@
             </div>
         </div>
     {/if}
+    <!-- Submit order Error -->
     {#if step === 2}
-        <div class="card-container">
-            <div class="order-card">
-                <h1 class="heading-1 mb-0">Purchase</h1>
-                <p>
-                    Online purchases must be made through the Young Enterprise Trading Station.
-                    In order to link your order to the customisation options you have selected,
-                    please ensure the contact email you enter when checking out is the
-                    <b>same as the one you entered in the previous stage</b> ({email}).
-                    Whilst ordering, <b>do not close this page</b> as you will loose your customisation options.
-                    After you have completed your order, <b>please keep your order number safe</b>
-                    (as you will need it for the next stage) and click the next button below.
-                </p>
-                <div class="w-full flex flex-col items-center">
-                    <a class="btn btn-lg btn-primary mt-4" on:click={() => setTimeout(() => purchased = true, 5000)}
-                       href="https://www.ye-tradingstation.org.uk/product/bambuild-light-box-bundle" target="_blank">
-                        Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <span class="label-text-alt mt-2">Opens in a new tab</span>
-                </div>
-
-                <div class="flex flex-row justify-between">
-                    <button class="btn btn-secondary mt-4" on:click={() => step = 1}>
-                        <i class="mr-2 fas fa-arrow-left"></i> Back
-                    </button>
-                    <button class="btn btn-primary mt-4" on:click={() => step = 3} disabled={!purchased}>
-                        Next <i class="ml-2 fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {/if}
-    {#if step === 3}
-        <div class="card-container">
-            <div class="order-card">
-                <h1 class="heading-1 mb-0">Link Order</h1>
-                <p>
-                    Please enter your order number below to link your customisation options to your order.
-                </p>
-
-                <h3 class="heading-3 mt-2">Order Number</h3>
-                <input type="text" id="order-number" class="order-number input-lg"
-                       bind:value={orderNumber} placeholder="Order Number" data-valid={orderNumValid}>
-
-                <div class="flex flex-row justify-between">
-                    <button class="btn btn-secondary mt-4" on:click={() => step = 2}>
-                        <i class="mr-2 fas fa-arrow-left"></i> Back
-                    </button>
-                    <button class="btn btn-primary mt-4" on:click={submitOrder} disabled={!orderNumValid}>
-                        Finish <i class="ml-2 fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {/if}
-    {#if step === 4 }
-        {#if errorRetriedMessage}
+        {#if errorRetriedSubmitMessage}
             <Alert color="danger" dismissable>
                 <span class="font-medium">Order submission failed.</span> Please send the customisation code to <a class="link link-danger" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
             </Alert>
@@ -350,21 +345,126 @@
                 <p>
                     If this does not work, please send the following customisation code to
                     <a class="link-primary" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
-                    and we will manually link your order to your customisation options.
+                    and we will manually add your customisation options to our database.
                 </p>
 
                 <div class="mt-4 mb-2 flex flex-row justify-between items-center">
                     <h4 class="heading-4">Your Customisation Code</h4>
-                    <button class="btn btn-sm" on:click={copyErrorCode}>
+                    <button class="btn btn-sm" on:click={copyCustomisationCode}>
                         <i class="mr-2 fas fa-copy"></i> Copy code
                     </button>
                 </div>
                 <div class="bg-black p-4 rounded-xl" style="overflow-wrap: anywhere;">
-                    <code>{ b64data }</code>
+                    <code>{ generateB64Data() }</code>
                 </div>
 
                 <div class="flex flex-row justify-between">
-                    <button class="btn btn-error mt-4" on:click={retryOrder} disabled={errorRetried}>
+                    <button class="btn btn-error mt-4" on:click={retrySubmitOrder} disabled={errorRetriedSubmit}>
+                        <i class="mr-2 fas fa-rotate-right"></i> Retry
+                    </button>
+                    <button class="btn btn-primary mt-4" on:click={() => step = 3}>
+                        Next <i class="ml-2 fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {/if}
+    <!-- Purchase -->
+    {#if step === 3}
+        {#if !errorRetriedSubmit}
+            <Alert color="success" dismissable>
+                <span class="font-medium">Order submitted.</span> Your customisation options have been submitted. Please complete your order by following the details below.
+            </Alert>
+        {/if}
+        <div class="card-container">
+            <div class="order-card">
+                <h1 class="heading-1 mb-0">Purchase</h1>
+                <p>Online purchases must be made through the Young Enterprise Trading Station.</p>
+                <p>
+                    In order to link your order to the customisation options you have selected,
+                    please ensure the contact email you enter when checking out is the
+                    <b>same as the one you entered in the previous stage:</b>
+                </p>
+                <div class="bg-black px-4 py-2 rounded-xl" style="overflow-wrap: anywhere;"><code>{email}</code></div>
+                <p>
+                    After you have completed your order, <b>return to this page</b> with your order number
+                    (as you will need it for the next stage) and click the next button below.
+                </p>
+                <div class="w-full flex flex-col items-center">
+                    <a class="btn btn-lg btn-primary mt-4" on:click={() => setTimeout(() => purchased = true, 5000)}
+                       href="https://www.ye-tradingstation.org.uk/product/bambuild-light-box-bundle" target="_blank">
+                        Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <span class="label-text-alt mt-2">Opens in a new tab</span>
+                </div>
+
+                <div class="flex flex-row justify-end">
+                    <button class="btn btn-primary mt-4" on:click={() => step = 4} disabled={!purchased}>
+                        Next <i class="ml-2 fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {/if}
+    <!-- Link Order -->
+    {#if step === 4}
+        <div class="card-container">
+            <div class="order-card">
+                <h1 class="heading-1 mb-0">Link Order</h1>
+                <p>
+                    Please enter your order number below to link your customisation options to your order.
+                </p>
+
+                <h3 class="heading-3 mt-2">Order Number</h3>
+                <input type="text" id="order-number" class="order-number input-lg"
+                       bind:value={orderNumber} placeholder="Order Number" data-valid={orderNumValid}>
+
+                <div class="flex flex-row justify-between">
+                    <button class="btn btn-secondary mt-4" on:click={() => step = 3}>
+                        <i class="mr-2 fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn btn-primary mt-4" on:click={linkOrder} disabled={!orderNumValid}>
+                        Finish <i class="ml-2 fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    {/if}
+    <!-- Link Order Error -->
+    {#if step === 5}
+        {#if errorRetriedLinkMessage}
+            <Alert color="danger" dismissable>
+                <span class="font-medium">Order link failed.</span> Please send your order identifier and number to <a class="link link-danger" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
+            </Alert>
+        {/if}
+        <div class="card-container">
+            <div class="order-card">
+                <h1 class="order-confirmed-heading">Order Error</h1>
+                <p>
+                    Your customisations have been saved. However, there was an error linking your order.
+                    Please try again using the retry button at the bottom of the page.
+                </p>
+                <p>
+                    If this does not work, please send the following details to
+                    <a class="link-primary" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
+                    and we will manually link your order to your customisation options.
+                </p>
+
+                <div class="mt-4 mb-2 flex flex-row justify-between items-center">
+                    <h4 class="heading-4">Details</h4>
+                    <button class="btn btn-sm" on:click={copyOrderDetails}>
+                        <i class="mr-2 fas fa-copy"></i> Copy details
+                    </button>
+                </div>
+                <div class="bg-black p-4 rounded-xl" style="overflow-wrap: anywhere;">
+                    <code>
+                        Order Identifier: {orderIdentifier}<br>
+                        YE Order Number: {orderNumber}
+                    </code>
+                </div>
+
+                <div class="flex flex-row justify-between">
+                    <button class="btn btn-error mt-4" on:click={retryLinkOrder} disabled={errorRetriedLink}>
                         <i class="mr-2 fas fa-rotate-right"></i> Retry
                     </button>
                     <button class="btn btn-primary mt-4" on:click={() => step = 5}>
@@ -374,7 +474,8 @@
             </div>
         </div>
     {/if}
-    {#if step === 5 }
+    <!-- Order Complete -->
+    {#if step === 6}
         <div class="card-container">
             <div class="order-card">
                 <div class="flex flex-row relative">
@@ -423,7 +524,6 @@
 }
 
 #insert-selection {
-    /* @apply grid grid-cols-2 gap-4 mb-4; */
     @apply grid grid-cols-1 gap-4 mb-4;
 }
 
