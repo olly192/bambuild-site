@@ -28,6 +28,14 @@
                         'title': 'Christmas Bundle',
                         'href': '/shop/product/lightbox/christmas-bundle'
                     }
+                },
+                'keyring': {
+                    'title': 'Keyring',
+                    'href': '/shop/product/keyring'
+                },
+                'totebag': {
+                    'title': 'Tote Bag',
+                    'href': '/shop/product/totebag'
                 }
             }
         }

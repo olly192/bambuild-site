@@ -2,7 +2,6 @@
 import ContentWrapper from "$lib/components/ContentWrapper.svelte";
 import ShopCard from "$lib/components/ShopCard.svelte";
 import ShopCardCountdown from "$lib/components/ShopCardCountdown.svelte";
-import ShopSectionCountdown from "$lib/components/ShopSectionCountdown.svelte";
 import Alert from "$lib/components/Alert.svelte";
 </script>
 
@@ -27,45 +26,67 @@ import Alert from "$lib/components/Alert.svelte";
                 <p class="font-bold">Currently on pre-order, expected delivery date: 12/12/2022</p>
                 <p>The BamBuild light box bundle includes our bamboo, self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
             </ShopCard>
-            <ShopCard title="Premium Light Box Bundle" columns="2">
-                <span slot="price">£24.99</span>
-                <ShopCardCountdown slot="header"/>
-                Our premium light box. Coming soon...
-            </ShopCard>
+            <!-- <ShopCard title="Premium Light Box Bundle" columns="2"> -->
+            <!--     <span slot="price">£24.99</span> -->
+            <!--     <ShopCardCountdown slot="header"/> -->
+            <!--     Our premium light box. Coming soon... -->
+            <!-- </ShopCard> -->
         </div>
     </div>
+
 
     <div class="my-4 flex flex-col md:flex-row justify-between items-center">
-        <h2 class="heading-2">Acrylic Inserts</h2>
-        <a disabled class="btn btn-sm btn-primary mt-2 md:mt-0">View All Inserts <i class="fas fa-arrow-right ml-2"></i></a>
+        <h2 class="heading-2">Custom Keyrings</h2>
+        <a disabled class="btn btn-sm btn-primary mt-2 md:mt-0">View All Keyrings <i class="fas fa-arrow-right ml-2"></i></a>
     </div>
-    <div class="shop-card-wrapper wrapper-small">
-        <div style="grid-column: span 4">
-            <ShopSectionCountdown style="grid-column: span 2"/>
-        </div>
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
+    <div class="shop-card-wrapper">
+        <ShopCard title="Custom Keyrings" columns="2" link="/shop/product/keyring">
+            <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+            <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
+            Create your own custom engraved keyring.
+        </ShopCard>
     </div>
 
-    <h2 class="heading-2 my-4">Replacement Parts</h2>
-    <div class="shop-card-wrapper wrapper-small">
-        <div style="grid-column: span 4">
-            <ShopSectionCountdown style="grid-column: span 2"/>
-        </div>
+    <h2 class="heading-2 my-4">Personalised Tote Bags</h2>
+    <div class="shop-card-wrapper">
+        <ShopCard title="Personalised Tote Bags" columns="2" link="/shop/product/totebag">
+            <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
+            <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
+            Create your own custom printed tote bag.
+        </ShopCard>
     </div>
+
+    <!-- <div class="my-4 flex flex-col md:flex-row justify-between items-center"> -->
+    <!--     <h2 class="heading-2">Acrylic Inserts</h2> -->
+    <!--     <a disabled class="btn btn-sm btn-primary mt-2 md:mt-0">View All Inserts <i class="fas fa-arrow-right ml-2"></i></a> -->
+    <!-- </div> -->
+    <!-- <div class="shop-card-wrapper wrapper-small"> -->
+        <!-- <div style="grid-column: span 4"> -->
+        <!--     <ShopSectionCountdown style="grid-column: span 2"/> -->
+        <!-- </div> -->
+        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
+        <!--     Hello World -->
+        <!-- </ShopCard> -->
+        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
+        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
+        <!--     Hello World -->
+        <!-- </ShopCard> -->
+        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
+        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
+        <!--     Hello World -->
+        <!-- </ShopCard> -->
+        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
+        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
+        <!--     Hello World -->
+        <!-- </ShopCard> -->
+    <!-- </div> -->
+
+    <!-- <h2 class="heading-2 my-4">Replacement Parts</h2> -->
+    <!-- <div class="shop-card-wrapper wrapper-small"> -->
+    <!--     <div style="grid-column: span 4"> -->
+    <!--         <ShopSectionCountdown style="grid-column: span 2"/> -->
+    <!--     </div> -->
+    <!-- </div> -->
 
 </ContentWrapper>
 

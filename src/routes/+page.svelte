@@ -1,11 +1,9 @@
 <script>
     import {Fullpage, FullpageSection} from "$lib/fullpage";
-    import AboutUsCard from "$lib/components/AboutUsCard.svelte";
     import ShopCard from "$lib/components/ShopCard.svelte";
     import ShopCardCountdown from "$lib/components/ShopCardCountdown.svelte";
     import HeaderParralax from "$lib/components/HeaderParralax.svelte";
     import Footer from "$lib/components/Footer.svelte";
-    import ShopSectionCountdown from "$lib/components/ShopSectionCountdown.svelte";
 
     let windowWidth;
 </script>
@@ -31,8 +29,8 @@
                     <a href="/shop" class="btn btn-sm btn-primary mt-2 md:mt-0">View All Products <i class="fas fa-arrow-right ml-2"></i></a>
                 {/if}
             </div>
-            <div class="w-full flex flex-row justify-center">
-                <div class="max-w-xl">
+            <div class="w-full flex flex-col lg:flex-row justify-center items-center gap-4">
+                <div class="max-w-sm md:max-w-xl">
                     <ShopCard title="Christmas Light Box Bundle" link="/shop/product/lightbox/christmas-bundle">
                         <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £16.99</span>
                         <div slot="header" class="flex flex-row justify-center h-48 rounded-lg">
@@ -48,6 +46,18 @@
                         </p>
                     </ShopCard>
                 </div>
+                {#if windowWidth > 768}
+                <div class="max-w-xl md:min-w-[320px] flex lg:flex-col gap-4">
+                    <ShopCard title="Custom Keyrings" link="/shop/product/keyring" smallLink>
+                        <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+                        <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
+                    </ShopCard>
+                    <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" smallLink>
+                        <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
+                        <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
+                    </ShopCard>
+                </div>
+                {/if}
             </div>
             <!-- <ShopSectionCountdown date="2022-12-25 09:30:00" style="grid-column: span 2"/> -->
             <!-- <div class="product-wrapper"> -->

@@ -2,13 +2,15 @@
     import ImagePlaceholder from "$lib/components/ImagePlaceholder.svelte";
 
     export let link = false
+    export let smallLink = false
     export let title = "Product Title"
     export let columns = 1
     export let image = false
     export let small = false
+    export let className = ""
 </script>
 
-<div class="rounded-lg shadow-md bg-gray-800 border-gray-700 flex flex-col justify-between max-w-2xl" style="grid-column: span {columns}">
+<div class="rounded-lg shadow-md bg-gray-800 border-gray-700 flex flex-col justify-between max-w-2xl {className}" style="grid-column: span {columns}">
     {#if link}
         <a href={link} class="h-full">
             <slot name="header">
@@ -43,7 +45,11 @@
             <span class="text-3xl font-bold text-gray-900 dark:text-white">
                 <slot name="price"/>
             </span>
-            {#if link}
+            {#if link && smallLink}
+                <a href={link} class="btn btn-sm btn-circle btn-primary"><i class="fas fa-arrow-right"></i></a>
+            {:else if smallLink}
+                <button disabled class="btn btn-sm btn-circle btn-primary"><i class="fas fa-arrow-right"></i></button>
+            {:else if link}
                 <a href={link} class="btn btn-sm btn-primary">View Product <i class="fas fa-arrow-right ml-2"></i></a>
             {:else}
                 <button disabled class="btn btn-sm btn-primary">View Product <i class="fas fa-arrow-right ml-2"></i></button>

@@ -52,7 +52,7 @@
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </li>
-            <!-- Sidebar content here -->
+            Sidebar content here
             {#each navItems as {name, link, icon}}
                 <li>
                     <a on:click={() => drawerOpen = false} class="btn btn-lg btn-ghost link-sidebar {$page.url.pathname === link ? 'link-active' : 'link-inactive'}" href={link}>
