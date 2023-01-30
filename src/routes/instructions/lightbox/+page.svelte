@@ -64,16 +64,17 @@
         height: calc(100vmin - 4rem);
     }
     #instructions-loader {
-        @apply absolute top-0 text-center text-black;
+        @apply absolute top-0 text-center text-black p-8;
         width: calc(100vmin - 4rem);
         height: calc(100vmin - 4rem);
         @apply flex flex-row items-center justify-center;
-        @apply text-2xl sm:text-6xl md:text-7xl lg:text-8xl font-bold;
+        @apply text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold;
         @apply z-30 bg-white;
     }
     #instructions-loader > svg {
-        @apply w-20 h-20 mr-12 text-black;
-        @apply animate-spin fill-primary-500;
+        @apply w-10 h-10 mr-6;
+        @apply md:w-20 md:h-20 md:mr-12;
+        @apply animate-spin text-black fill-primary-500;
     }
     #instructions-scroll-prompt {
         @apply absolute top-16 left-0 right-0 text-center text-black;
