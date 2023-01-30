@@ -38,6 +38,13 @@
                     'href': '/shop/product/totebag'
                 }
             }
+        },
+        'instructions': {
+            'title': 'Instructions',
+            'lightbox': {
+                'title': 'Lightbox',
+                'href': '/instructions/lightbox'
+            }
         }
     }
     let crumbResolver = () => {
