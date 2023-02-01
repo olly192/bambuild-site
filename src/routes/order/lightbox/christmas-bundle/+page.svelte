@@ -97,7 +97,7 @@
 
     function submitOrder() {
         let data = formatData()
-        let endpoint = `${env.PUBLIC_API_URL}/api/create-order/christmas-bundle`
+        let endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/christmas-bundle`
         fetch(endpoint, {
             method: "POST",
             headers: {

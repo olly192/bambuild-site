@@ -36,24 +36,29 @@ import Alert from "$lib/components/Alert.svelte";
 
 
     <div class="my-4 flex flex-col md:flex-row justify-between items-center">
-        <h2 class="heading-2">Custom Keyrings</h2>
-        <a disabled class="btn btn-sm btn-primary mt-2 md:mt-0">View All Keyrings <i class="fas fa-arrow-right ml-2"></i></a>
+        <h2 class="heading-2">Custom Items</h2>
     </div>
-    <div class="shop-card-wrapper">
-        <ShopCard title="Custom Keyrings" columns="2" link="/shop/product/keyring">
-            <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
-            <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
-            Create your own custom engraved keyring.
-        </ShopCard>
-    </div>
-
-    <h2 class="heading-2 my-4">Personalised Tote Bags</h2>
-    <div class="shop-card-wrapper">
-        <ShopCard title="Personalised Tote Bags" columns="2" link="/shop/product/totebag">
-            <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
-            <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
-            Create your own custom printed tote bag.
-        </ShopCard>
+    <div class="flex justify-center">
+        <div class="shop-card-wrapper">
+            <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" columns="2">
+                <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
+                <div slot="header" class="flex flex-row h-48 rounded-lg">
+                    <img src="/images/totebag/totebag1.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/totebag/totebag2.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/totebag/totebag3.jpeg" alt="Light Box" class="hidden md:block product-image"/>
+                </div>
+                <p>Create your own custom printed tote bag.</p>
+            </ShopCard>
+            <ShopCard title="Custom Keyrings" link="/shop/product/keyring" columns="2">
+                <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+                <div slot="header" class="flex flex-row h-48 rounded-lg">
+                    <img src="/images/keyring/keyring1.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/keyring/keyring2.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/keyring/keyring3.jpeg" alt="Light Box" class="hidden md:block product-image"/>
+                </div>
+                <p>Create your own custom engraved keyring.</p>
+            </ShopCard>
+        </div>
     </div>
 
     <!-- <div class="my-4 flex flex-col md:flex-row justify-between items-center"> -->

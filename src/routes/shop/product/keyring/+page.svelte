@@ -24,12 +24,9 @@
                 autoplayProgressVisible
                 pauseOnFocus
             >
-                <ImagePlaceholder className="preview-image h-full"/>
-                <ImagePlaceholder className="preview-image h-full"/>
-                <ImagePlaceholder className="preview-image h-full"/>
-                <!-- <img class="preview-image" src="/images/lightbox/demo1.jpg"> -->
-                <!-- <img class="preview-image" src="/images/lightbox/demo2.jpg"> -->
-                <!-- <img class="preview-image" src="/images/lightbox/model1.png"> -->
+                <img class="preview-image" src="/images/keyring/keyring1.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring2.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring3.jpeg">
             </svelte:component>
         </div>
         <div id="options-container">
@@ -41,7 +38,7 @@
                     </Alert>
                     <h3 class="heading-3">Description</h3>
                     <p>
-                        Create your own custom engraved keyring.
+                        Choose your own image to be engraved onto a keyring.
                     </p>
                 </div>
                 <div>
@@ -49,11 +46,9 @@
                         <s class="text-red-400 font-thin">£3.99</s> £2.50
                     </span>
                     <div class="w-full flex flex-row justify-around mt-4 gap-4">
-                        <div class="tooltip" data-tip="Coming Soon">
-                            <a class="btn btn-primary" disabled>
-                                <i class="mr-2 fas fa-cart-plus"></i> Customise
-                            </a>
-                        </div>
+                        <a class="btn btn-primary" href="/order/keyring">
+                            <i class="mr-2 fas fa-cart-plus"></i> Customise
+                        </a>
                     </div>
                 </div>
             </div>

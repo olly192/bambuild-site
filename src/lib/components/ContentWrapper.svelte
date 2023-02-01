@@ -13,6 +13,14 @@
                     'title': 'Christmas Bundle',
                     'href': '/order/lightbox/christmas-bundle'
                 }
+            },
+            'keyring': {
+                'title': 'Keyring',
+                'href': '/order/keyring'
+            },
+            'totebag': {
+                'title': 'Tote Bag',
+                'href': '/order/totebag'
             }
         },
         'shop': {

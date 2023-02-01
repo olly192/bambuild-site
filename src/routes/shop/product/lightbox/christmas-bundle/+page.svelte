@@ -57,11 +57,9 @@
                         <a class="btn btn-primary" href="/order/lightbox/christmas-bundle">
                             <i class="mr-2 fas fa-cart-plus"></i> Customise
                         </a>
-                        <div class="tooltip" data-tip="Coming Soon">
-                            <a class="btn btn-secondary" disabled>
-                                <i class="mr-2 fas fa-book"></i> Assembly
-                            </a>
-                        </div>
+                        <a class="btn btn-primary" href="/instructions/lightbox">
+                            <i class="mr-2 fas fa-book"></i> Assembly
+                        </a>
                     </div>
                 </div>
             </div>

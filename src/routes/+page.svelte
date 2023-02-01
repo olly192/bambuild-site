@@ -29,7 +29,7 @@
                     <a href="/shop" class="btn btn-sm btn-primary mt-2 md:mt-0">View All Products <i class="fas fa-arrow-right ml-2"></i></a>
                 {/if}
             </div>
-            <div class="w-full flex flex-col lg:flex-row justify-center items-center gap-4">
+            <div class="w-full flex flex-col justify-center items-center gap-4">
                 <div class="max-w-sm md:max-w-xl">
                     <ShopCard title="Christmas Light Box Bundle" link="/shop/product/lightbox/christmas-bundle">
                         <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £16.99</span>
@@ -47,14 +47,22 @@
                     </ShopCard>
                 </div>
                 {#if windowWidth > 768}
-                <div class="max-w-xl md:min-w-[320px] flex lg:flex-col gap-4">
-                    <ShopCard title="Custom Keyrings" link="/shop/product/keyring" smallLink>
-                        <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
-                        <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
-                    </ShopCard>
-                    <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" smallLink>
+                <div class="max-w-xl md:min-w-[320px] flex flex-row gap-4">
+                    <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" columns="2" smallLink>
                         <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
-                        <ShopCardCountdown slot="header" date="2023-02-01 08:00:00"/>
+                        <div slot="header" class="flex flex-row h-48 rounded-lg">
+                            <img src="/images/totebag/totebag1.jpeg" alt="Light Box" class="product-image-half"/>
+                            <img src="/images/totebag/totebag2.jpeg" alt="Light Box" class="product-image-half"/>
+                        </div>
+                        <p>Create your own custom printed tote bag.</p>
+                    </ShopCard>
+                    <ShopCard title="Custom Keyrings" link="/shop/product/keyring" columns="2" smallLink>
+                        <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+                        <div slot="header" class="flex flex-row h-48 rounded-lg">
+                            <img src="/images/keyring/keyring1.jpeg" alt="Light Box" class="product-image-half"/>
+                            <img src="/images/keyring/keyring2.jpeg" alt="Light Box" class="product-image-half"/>
+                        </div>
+                        <p>Create your own custom engraved keyring.</p>
                     </ShopCard>
                 </div>
                 {/if}
@@ -189,6 +197,10 @@
     }
     .product-image {
         @apply w-1/2 md:w-1/3 object-cover;
+        border-radius: inherit;
+    }
+    .product-image-half {
+        @apply w-1/2 object-cover;
         border-radius: inherit;
     }
 </style>
