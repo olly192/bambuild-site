@@ -8,11 +8,7 @@
             'href': '',
             'lightbox': {
                 'title': 'Lightbox',
-                'href': '',
-                'christmas-bundle': {
-                    'title': 'Christmas Bundle',
-                    'href': '/order/lightbox/christmas-bundle'
-                }
+                'href': '/order/lightbox'
             },
             'keyring': {
                 'title': 'Keyring',
@@ -31,11 +27,7 @@
                 'href': '',
                 'lightbox': {
                     'title': 'Lightbox',
-                    'href': '/shop/product/lightbox',
-                    'christmas-bundle': {
-                        'title': 'Christmas Bundle',
-                        'href': '/shop/product/lightbox/christmas-bundle'
-                    }
+                    'href': '/shop/product/lightbox'
                 },
                 'keyring': {
                     'title': 'Keyring',

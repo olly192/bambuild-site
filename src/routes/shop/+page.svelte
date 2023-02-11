@@ -16,15 +16,14 @@ import Alert from "$lib/components/Alert.svelte";
             <!-- <div style="grid-column: span 4"> -->
             <!--     <ShopSectionCountdown date="2022-12-25 09:30:00" style="grid-column: span 2"/> -->
             <!-- </div> -->
-            <ShopCard title="Christmas Light Box Bundle" link="/shop/product/lightbox/christmas-bundle" columns="2">
+            <ShopCard title="Light Box Bundle" link="/shop/product/lightbox" columns="2">
                 <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £16.99</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
                     <img src="/images/lightbox/demo1.jpg" alt="Light Box" class="product-image"/>
                     <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>
                     <img src="/images/lightbox/model1.png" alt="Light Box" class="hidden md:block product-image"/>
                 </div>
-                <p class="font-bold">Currently on pre-order, expected delivery date: 12/12/2022</p>
-                <p>The BamBuild light box bundle includes our bamboo, self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
+                <p>The BamBuild light box bundle includes our self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
             </ShopCard>
             <!-- <ShopCard title="Premium Light Box Bundle" columns="2"> -->
             <!--     <span slot="price">£24.99</span> -->

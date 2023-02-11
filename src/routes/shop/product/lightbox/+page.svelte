@@ -12,7 +12,7 @@
 
 <ContentWrapper breadcrumb>
     <div class="flex flex-col lg:flex-row items-start md:items-center mb-4 justify-between">
-        <h2 class="heading-2">Christmas Light Box Bundle</h2>
+        <h2 class="heading-2">Light Box Bundle</h2>
     </div>
     <div id="product-main">
         <div id="preview-container">
@@ -37,14 +37,14 @@
                     </Alert>
                     <h3 class="heading-3">Description</h3>
                     <p>
-                        Build your own light box with the BamBuild Christmas Light Box Bundle.
+                        Build your own light box with the BamBuild Light Box Bundle.
                     </p>
                     <p>
-                        This bundle includes our bamboo, self-assembled light box (with optional personalised engraving),
+                        This bundle includes our self-assembled light box (with optional personalised engraving),
                         an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)
                     </p>
                     <p>
-                        Our light boxes are made from bamboo, and are designed to be self-assembled with no tools required.
+                        Our light boxes are made from poplar, and are designed to be self-assembled with no tools required.
                         The light box is fully reusable with compatible acrylic inserts and can be easily repaired with
                         spare parts shortly available on our website.
                     </p>
@@ -54,7 +54,7 @@
                         <s class="text-red-400 font-thin">£19.99</s> £16.99
                     </span>
                     <div class="w-full flex flex-row justify-around mt-4 gap-4">
-                        <a class="btn btn-primary" href="/order/lightbox/christmas-bundle">
+                        <a class="btn btn-primary" href="/order/lightbox">
                             <i class="mr-2 fas fa-cart-plus"></i> Customise
                         </a>
                         <a class="btn btn-primary" href="/instructions/lightbox">

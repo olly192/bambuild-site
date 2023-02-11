@@ -32,14 +32,8 @@
     let shippingForm
     let errorRetriedSubmit = false
     let errorRetriedSubmitMessage = false
-    let errorRetriedLink = false
-    let errorRetriedLinkMessage = false
     $: emailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/g.test(email)
-    let purchased = false
-    let orderNumber = ""
-    $: orderNumValid = /^[0-9]{4}$/g.test(orderNumber)
     let step = 0
-    let orderIdentifier = ""
 
     let insertData = {
         // 'insert-1': {
@@ -86,18 +80,9 @@
         }
     }
 
-    const copyOrderDetails = async () => {
-        try {
-            await navigator.clipboard.writeText("Order Identifier: {orderIdentifier}\nYE Order Number: {orderNumber}");
-            console.log('Content copied to clipboard');
-        } catch (err) {
-            console.error('Failed to copy: ', err);
-        }
-    }
-
     function submitOrder() {
         let data = formatData()
-        let endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/christmas-bundle`
+        let endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/bundle`
         fetch(endpoint, {
             method: "POST",
             headers: {
@@ -107,34 +92,10 @@
         }).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
-                    console.log(data)
-                    orderIdentifier = data.identifier
                     step = 3
                 })
             } else {
                 step = 2
-            }
-        }).catch(err => {
-            step = 2
-        })
-    }
-
-    function linkOrder() {
-        let endpoint = `${env.PUBLIC_API_URL}/api/link-order`
-        fetch(endpoint, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                "identifier": orderIdentifier,
-                "orderNumber": orderNumber
-            })
-        }).then(res => {
-            if (res.status === 200) {
-                step = 6
-            } else {
-                step = 5
             }
         }).catch(err => {
             step = 2
@@ -148,31 +109,18 @@
             errorRetriedSubmitMessage = true
         }, 2000)
     }
-
-    function retryLinkOrder() {
-        errorRetriedLink = true
-        linkOrder()
-        setTimeout(() => {
-            errorRetriedLinkMessage = true
-        }, 2000)
-    }
 </script>
 
 <ContentWrapper breadcrumb>
     <div class="flex flex-col lg:flex-row items-start md:items-center mb-4 justify-between">
-        <h2 class="heading-2">Christmas Light Box Bundle</h2>
+        <h2 class="heading-2">Light Box Bundle</h2>
         <ul class="steps steps-vertical md:steps-horizontal">
             <li class="step" class:step-primary={step >= 0}>Customise</li>
             <li class="step" class:step-primary={step >= 1}>Confirm details</li>
             {#if step === 2 }
                 <li class="step step-error">Error</li>
             {/if}
-            <li class="step" class:step-primary={step >= 3}>Purchase</li>
-            <li class="step" class:step-primary={step >= 4}>Link order</li>
-            {#if step === 4 }
-                <li class="step step-error">Error</li>
-            {/if}
-            <li class="step" class:step-primary={step >= 6}>Order confirmed</li>
+            <li class="step" class:step-primary={step >= 3}>Order confirmed</li>
         </ul>
     </div>
     <!-- Order Customisation -->
@@ -289,7 +237,6 @@
                 </label>
                 <span class="label-text-alt">
                     Your email will be used to confirm your customisation options and to contact you with any updates with your order.
-                    Ensure this is the email you use to purchase the product in the next step.
                 </span>
 
                 <h2 class="heading-2 mt-4">Shipping</h2>
@@ -297,7 +244,7 @@
                     <select bind:value={shippingMethod}>
                         <option selected disabled>Select a shipping method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
-                        <option value="1">Royal Mail (+£3.00)</option>
+                        <option value="1" disabled>Royal Mail (+£3.00) - Currently Unavailable</option>
                     </select>
                 </label>
                 {#if shippingMethod === "0"}
@@ -332,7 +279,7 @@
     {#if step === 2}
         {#if errorRetriedSubmitMessage}
             <Alert color="danger" dismissable>
-                <span class="font-medium">Order submission failed.</span> Please send the customisation code to <a class="link link-danger" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
+                <span class="font-medium">Order submission failed.</span> Please send the customisation code to <a class="link link-danger" href="mailto:support@bambuild.ml?subject=Website Order (Light Box Bundle)">support@bambuild.ml</a>
             </Alert>
         {/if}
         <div class="card-container">
@@ -344,7 +291,7 @@
                 </p>
                 <p>
                     If this does not work, please send the following customisation code to
-                    <a class="link-primary" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
+                    <a class="link-primary" href="mailto:support@bambuild.ml?subject=Website Order (Light Box Bundle)">support@bambuild.ml</a>
                     and we will manually add your customisation options to our database.
                 </p>
 
@@ -369,113 +316,8 @@
             </div>
         </div>
     {/if}
-    <!-- Purchase -->
-    {#if step === 3}
-        {#if !errorRetriedSubmit}
-            <Alert color="success" dismissable>
-                <span class="font-medium">Order submitted.</span> Your customisation options have been submitted. Please complete your order by following the details below.
-            </Alert>
-        {/if}
-        <div class="card-container">
-            <div class="order-card">
-                <h1 class="heading-1 mb-0">Purchase</h1>
-                <p>Online purchases must be made through the Young Enterprise Trading Station.</p>
-                <p>
-                    In order to link your order to the customisation options you have selected,
-                    please ensure the contact email you enter when checking out is the
-                    <b>same as the one you entered in the previous stage:</b>
-                </p>
-                <div class="bg-black px-4 py-2 rounded-xl" style="overflow-wrap: anywhere;"><code>{email}</code></div>
-                <p>
-                    After you have completed your order, <b>return to this page</b> with your order number
-                    (as you will need it for the next stage) and click the next button below.
-                </p>
-                <div class="w-full flex flex-col items-center">
-                    <a class="btn btn-lg btn-primary mt-4" on:click={() => setTimeout(() => purchased = true, 5000)}
-                       href="https://www.ye-tradingstation.org.uk/product/bambuild-light-box-bundle" target="_blank">
-                        Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                    <span class="label-text-alt mt-2">Opens in a new tab</span>
-                </div>
-
-                <div class="flex flex-row justify-end">
-                    <button class="btn btn-primary mt-4" on:click={() => step = 4} disabled={!purchased}>
-                        Next <i class="ml-2 fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {/if}
-    <!-- Link Order -->
-    {#if step === 4}
-        <div class="card-container">
-            <div class="order-card">
-                <h1 class="heading-1 mb-0">Link Order</h1>
-                <p>
-                    Please enter your order number below to link your customisation options to your order.
-                </p>
-
-                <h3 class="heading-3 mt-2">Order Number</h3>
-                <input type="text" id="order-number" class="order-number input-lg"
-                       bind:value={orderNumber} placeholder="Order Number" data-valid={orderNumValid}>
-
-                <div class="flex flex-row justify-between">
-                    <button class="btn btn-secondary mt-4" on:click={() => step = 3}>
-                        <i class="mr-2 fas fa-arrow-left"></i> Back
-                    </button>
-                    <button class="btn btn-primary mt-4" on:click={linkOrder} disabled={!orderNumValid}>
-                        Finish <i class="ml-2 fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {/if}
-    <!-- Link Order Error -->
-    {#if step === 5}
-        {#if errorRetriedLinkMessage}
-            <Alert color="danger" dismissable>
-                <span class="font-medium">Order link failed.</span> Please send your order identifier and number to <a class="link link-danger" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
-            </Alert>
-        {/if}
-        <div class="card-container">
-            <div class="order-card">
-                <h1 class="order-confirmed-heading">Order Error</h1>
-                <p>
-                    Your customisations have been saved. However, there was an error linking your order.
-                    Please try again using the retry button at the bottom of the page.
-                </p>
-                <p>
-                    If this does not work, please send the following details to
-                    <a class="link-primary" href="mailto:support@bambuild.ml?subject=Website Order (Christmas Bundle)">support@bambuild.ml</a>
-                    and we will manually link your order to your customisation options.
-                </p>
-
-                <div class="mt-4 mb-2 flex flex-row justify-between items-center">
-                    <h4 class="heading-4">Details</h4>
-                    <button class="btn btn-sm" on:click={copyOrderDetails}>
-                        <i class="mr-2 fas fa-copy"></i> Copy details
-                    </button>
-                </div>
-                <div class="bg-black p-4 rounded-xl" style="overflow-wrap: anywhere;">
-                    <code>
-                        Order Identifier: {orderIdentifier}<br>
-                        YE Order Number: {orderNumber}
-                    </code>
-                </div>
-
-                <div class="flex flex-row justify-between">
-                    <button class="btn btn-error mt-4" on:click={retryLinkOrder} disabled={errorRetriedLink}>
-                        <i class="mr-2 fas fa-rotate-right"></i> Retry
-                    </button>
-                    <button class="btn btn-primary mt-4" on:click={() => step = 5}>
-                        Finish <i class="ml-2 fas fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    {/if}
     <!-- Order Complete -->
-    {#if step === 6}
+    {#if step === 3}
         <div class="card-container">
             <div class="order-card">
                 <div class="flex flex-row relative">
@@ -519,8 +361,9 @@
     @apply lg:max-h-[calc(75vmin-3rem)] lg:h-[calc(75vmin-3rem)]
 }
 
-.preview-image {
+.preview-image > img {
     @apply object-contain;
+    @apply lg:max-h-[calc(75vmin-3rem)] lg:h-[calc(75vmin-3rem)]
 }
 
 #insert-selection {

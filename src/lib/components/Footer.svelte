@@ -18,7 +18,7 @@
     </div>
     <div class="md:col-span-2 md:order-8 lg:order-1">
         <span class="footer-title mb-0">Shop</span>
-        <a class="link link-hover" href="/shop/product/lightbox/christmas-bundle">Light Box</a>
+        <a class="link link-hover" href="/shop/product/lightbox">Light Box</a>
         <a class="link link-hover" href="/shop/product/keyring">Custom Keyrings</a>
         <a class="link link-hover" href="/shop/product/totebag">Personalised Tote Bags</a>
     </div>
