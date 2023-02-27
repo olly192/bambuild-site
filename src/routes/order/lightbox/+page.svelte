@@ -30,6 +30,8 @@
     let shippingMethod
     let shippingName
     let shippingForm
+    let paymentMethod
+    let orderNumber
     let errorRetriedSubmit = false
     let errorRetriedSubmitMessage = false
     $: emailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/g.test(email)
@@ -63,7 +65,8 @@
             "firstName": firstName,
             "lastName": lastName,
             "shippingMethod": shippingMethod,
-            "shippingDetails": shippingMethod === "0" ? `Deliver to ${shippingName}, ${shippingForm}` : "Delivery"
+            "shippingDetails": shippingMethod === "0" ? `Deliver to ${shippingName}, ${shippingForm}` : "Delivery",
+            "paymentMethod": paymentMethod
         }
     }
 
@@ -93,6 +96,7 @@
             if (res.status === 200) {
                 res.json().then(data => {
                     step = 3
+                    orderNumber = data.identifier
                 })
             } else {
                 step = 2
@@ -115,12 +119,12 @@
     <div class="flex flex-col lg:flex-row items-start md:items-center mb-4 justify-between">
         <h2 class="heading-2">Light Box Bundle</h2>
         <ul class="steps steps-vertical md:steps-horizontal">
-            <li class="step" class:step-primary={step >= 0}>Customise</li>
-            <li class="step" class:step-primary={step >= 1}>Confirm details</li>
+            <li class="step w-32" class:step-primary={step >= 0}>Customise</li>
+            <li class="step w-32" class:step-primary={step >= 1}>Confirm details</li>
             {#if step === 2 }
-                <li class="step step-error">Error</li>
+                <li class="step w-32 step-error">Error</li>
             {/if}
-            <li class="step" class:step-primary={step >= 3}>Order confirmed</li>
+            <li class="step w-32" class:step-primary={step >= 3}>Finish order</li>
         </ul>
     </div>
     <!-- Order Customisation -->
@@ -244,7 +248,7 @@
                     <select bind:value={shippingMethod}>
                         <option selected disabled>Select a shipping method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
-                        <option value="1" disabled>Royal Mail (+£3.00) - Currently Unavailable</option>
+                        <option value="1">Royal Mail (+£3.00)</option>
                     </select>
                 </label>
                 {#if shippingMethod === "0"}
@@ -262,6 +266,15 @@
                         Young Enterprise Trading Station Website (next page)
                     </p>
                 {/if}
+
+                <h2 class="heading-2 mt-4">Payment</h2>
+                <label class="w-full mt-2 text-sm font-medium text-white">Payment Method
+                    <select bind:value={paymentMethod}>
+                        <option selected disabled>Select a payment method</option>
+                        <option value="0">In Person - Only available for CSGS students</option>
+                        <option value="1">Online</option>
+                    </select>
+                </label>
 
                 <div class="flex flex-row justify-between">
                     <button class="btn btn-secondary mt-4" on:click={() => step = 0}>
@@ -321,14 +334,26 @@
         <div class="card-container">
             <div class="order-card">
                 <div class="flex flex-row relative">
-                    <h1 class="order-confirmed-heading">Order<br>Confirmed</h1>
+                    <h1 class="order-confirmed-heading">Almost <br class="md:hidden">There</h1>
                     <img src="/images/header/5.png" id="order-confirmed-image">
                 </div>
-                <p class="z-20">
-                    Thank you for your order, we will contact you by email ({email}) with any updates.
+                <h4 class="heading-4">Order Number: {orderNumber}</h4>
+                <p class="mt-8 z-20">
+                    To complete your order, please follow the instructions below.
+                    Online purchases must be made through the Young Enterprise Trading Station.
+                    In order to link your order to the customisation options you have selected,
+                    please ensure the contact email you enter when checking out is the
+                    <b>same as the one you entered in the previous stage</b> ({email}).
                 </p>
 
-                <div class="social-media-icons">
+                <div class="w-full flex flex-col items-center">
+                    <a class="btn btn-lg btn-primary mt-4"
+                       href="https://www.ye-tradingstation.org.uk/product/bambuild-light-box-bundle">
+                        Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="social-media-icons mt-4">
                     <a class="btn btn-primary" href="/">
                         <i class="mr-2 fas fa-house"></i> Home Page
                     </a>

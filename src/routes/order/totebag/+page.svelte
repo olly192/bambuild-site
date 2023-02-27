@@ -55,11 +55,11 @@
     <div class="flex flex-col lg:flex-row items-start md:items-center mb-4 justify-between">
         <h2 class="heading-2">Personalised Tote Bag</h2>
         <ul class="steps steps-vertical md:steps-horizontal">
-            <li class="step" class:step-primary={step >= 0}>Customise</li>
+            <li class="step w-32" class:step-primary={step >= 0}>Customise</li>
             {#if step === 1 }
-                <li class="step step-error">Error</li>
+                <li class="step w-32 step-error">Error</li>
             {/if}
-            <li class="step" class:step-primary={step >= 2}>Order confirmed</li>
+            <li class="step w-32" class:step-primary={step >= 2}>Finish order</li>
         </ul>
     </div>
     {#if step === 0}
@@ -104,7 +104,7 @@
                     <select bind:value={shippingMethod}>
                         <option selected disabled>Select a shipping method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
-                        <option value="1" disabled>Royal Mail (+£3.00) - Currently unavailable</option>
+                        <option value="1">Royal Mail (+£3.00)</option>
                     </select>
                 </label>
                 {#if shippingMethod === "0"}
@@ -128,7 +128,7 @@
                     <select bind:value={paymentMethod}>
                         <option selected disabled>Select a payment method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
-                        <option value="1" disabled>Online - Currently unavailable</option>
+                        <option value="1">Online</option>
                     </select>
                 </label>
 
@@ -180,15 +180,26 @@
         <div class="card-container">
             <div class="order-card">
                 <div class="flex flex-row relative">
-                    <h1 class="order-confirmed-heading">Order<br>Confirmed</h1>
+                    <h1 class="order-confirmed-heading">Almost <br class="md:hidden">There</h1>
                     <img src="/images/header/5.png" id="order-confirmed-image">
                 </div>
                 <h4 class="heading-4">Order Number: {orderNumber}</h4>
-                <p class="z-20">
-                    Thank you for your order, we will contact you by email ({email}) with any updates.
+                <p class="mt-8 z-20">
+                    To complete your order, please follow the instructions below.
+                    Online purchases must be made through the Young Enterprise Trading Station.
+                    In order to link your order to the customisation options you have selected,
+                    please ensure the contact email you enter when checking out is the
+                    <b>same as the one you entered in the previous stage</b> ({email}).
                 </p>
 
-                <div class="social-media-icons">
+                <div class="w-full flex flex-col items-center">
+                    <a class="btn btn-lg btn-primary mt-4"
+                       href="https://www.ye-tradingstation.org.uk/product/bambuild-custom-tote-bag">
+                        Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="social-media-icons mt-4">
                     <a class="btn btn-primary" href="/">
                         <i class="mr-2 fas fa-house"></i> Home Page
                     </a>
