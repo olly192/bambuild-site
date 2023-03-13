@@ -15,13 +15,34 @@
     let orderNumber = ""
     let step = 0
 
+    let imageCode
+
     $: if (image) {
         console.log(image[0])
     }
 
+    let imageData = {
+        'polarbear': {
+            'image': '/images/totebag/totebag1.jpeg',
+            'name': 'Polar Bear'
+        },
+        'penguin': {
+            'image': '/images/totebag/totebag2.jpeg',
+            'name': 'Penguin'
+        },
+        'deer': {
+            'image': '/images/totebag/totebag3.jpeg',
+            'name': 'Deer'
+        },
+        'custom': {
+            'image': '/images/totebag/blank.jpeg',
+            'name': 'Create Your Own Design'
+        }
+    }
+
     function submitOrder() {
         let formData = new FormData()
-        formData.append("image", image[0])
+        formData.append("design", imageCode)
         formData.append("instructions", instructions)
         formData.append("email", email)
         formData.append("firstName", firstName)
@@ -30,7 +51,11 @@
         formData.append("shippingDetails", shippingMethod === "0" ? `Deliver to ${shippingName}, Room ${shippingForm}` : "Delivery")
         formData.append("paymentMethod", paymentMethod)
 
-        let endpoint = `${env.PUBLIC_API_URL}/api/order-image/totebag`
+        let endpoint = `${env.PUBLIC_API_URL}/api/order/totebag`
+        if (imageCode === "custom") {
+            formData.append("image", image[0])
+            endpoint = `${env.PUBLIC_API_URL}/api/order-image/totebag`
+        }
         console.log("Sending to", endpoint)
         fetch(endpoint, {
             method: "POST",
@@ -66,22 +91,38 @@
         <div class="card-container">
             <div class="order-card">
                 <h1 class="heading-1 mb-0">Order Details</h1>
+
                 <h2 class="heading-2 mt-4">Image</h2>
-                <div class="mt-2">
-                    <div id="bag-preview">
-                        <img src="/images/totebag/blank.jpeg" alt="Tote Bag" class="preview-bag" />
-                        <div class="preview-image">
-                            {#if image}
-                                <img src={URL.createObjectURL(image[0])} alt="Custom Image" />
+                <div id="image-selection">
+                    {#each Object.entries(imageData) as [name, data]}
+                        <input class="hidden" type="radio" bind:group={imageCode} value={name} id={name}>
+                        <label for={name}>
+                            {#if data.image}
+                                <img src={data.image}>
                             {/if}
-                        </div>
-                        <span>Printable Area</span>
-                    </div>
-                    <input class="mt-2" type="file" accept="image/*" id="file" bind:files={image}>
+                            <span class:mt-1={data.image} class:my-4={!data.image}>{data.name}</span>
+                        </label>
+                    {/each}
                 </div>
-                <label class="w-full mt-2 text-sm font-medium text-white">Additional Instructions
-                    <input type="text" bind:value={instructions} placeholder="Additional Instructions">
-                </label>
+
+                {#if imageCode === "custom"}
+                    <h2 class="heading-2 mt-4">Custom Totebag</h2>
+                    <div class="mt-2">
+                        <div id="bag-preview">
+                            <img src="/images/totebag/blank.jpeg" alt="Tote Bag" class="preview-bag" />
+                            <div class="preview-image">
+                                {#if image}
+                                    <img src={URL.createObjectURL(image[0])} alt="Custom Image" />
+                                {/if}
+                            </div>
+                            <span>Printable Area</span>
+                        </div>
+                        <input class="mt-2" type="file" accept="image/*" id="file" bind:files={image}>
+                    </div>
+                    <label class="w-full mt-2 text-sm font-medium text-white">Additional Instructions
+                        <input type="text" bind:value={instructions} placeholder="Additional Instructions">
+                    </label>
+                {/if}
 
                 <h2 class="heading-2 mt-4">Personal Details</h2>
                 <div class="flex gap-4">
@@ -143,8 +184,9 @@
                                     && firstName
                                     && lastName
                                     && ((shippingMethod === "0" && shippingName && shippingForm) || shippingMethod === "1")
-                                    && paymentMethod === "0"
-                                    && image
+                                    && paymentMethod
+                                    && imageCode
+                                    && (imageCode === "custom" ? image : true)
                                 )
                             }>
                         Next <i class="ml-2 fas fa-arrow-right"></i>
@@ -194,7 +236,7 @@
 
                 <div class="w-full flex flex-col items-center">
                     <a class="btn btn-lg btn-primary mt-4"
-                       href="https://www.ye-tradingstation.org.uk/product/bambuild-custom-tote-bag">
+                       href="https://www.ye-tradingstation.org.uk/product/bambuild-tote-bag">
                         Complete Purchase <i class="ml-4 fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
@@ -216,23 +258,54 @@
 </ContentWrapper>
 
 <style>
+#image-selection {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4 mb-4;
+}
+
+#image-selection > label {
+    @apply w-full p-2 pb-1 border bg-gray-800 border-gray-700 rounded-lg shadow-md;
+    @apply flex flex-col items-center;
+    @apply cursor-pointer;
+    @apply transition-colors duration-200 ease-in-out;
+}
+
+#image-selection > label:hover {
+    @apply bg-gray-700 border-gray-600;
+}
+
+#image-selection > input:checked + label {
+    @apply bg-gray-600 border-gray-500;
+}
+
+#image-selection > label > img {
+    @apply rounded object-cover;
+}
+
+#image-selection > input {
+    @apply hidden;
+}
+
 #bag-preview {
     @apply relative;
 }
+
 #bag-preview > span {
     @apply absolute top-[39%] left-[17%] right-[16%] bottom-[11%];
     @apply m-12;
     @apply text-red-600 text-3xl font-bold;
 }
+
 #bag-preview > .preview-image {
     @apply absolute top-[39%] left-[17%] right-[16%] bottom-[11%];
     @apply m-8;
     @apply bg-red-400 bg-opacity-25;
     @apply flex flex-col justify-center items-center;
 }
+
 #bag-preview > .preview-bag {
     @apply w-full max-h-[80vh];
 }
+
 .card-container {
     @apply w-full flex flex-col justify-center items-center;
     min-height: 75vmin;

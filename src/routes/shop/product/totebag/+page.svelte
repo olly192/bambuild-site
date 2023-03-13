@@ -3,7 +3,6 @@
     import Alert from "$lib/components/Alert.svelte";
 
     import {onMount} from "svelte";
-    import ImagePlaceholder from "$lib/components/ImagePlaceholder.svelte";
     let Carousel;
     onMount(async () => {
         const module = await import('svelte-carousel');
@@ -38,7 +37,7 @@
                     </Alert>
                     <h3 class="heading-3">Description</h3>
                     <p>
-                        Create your own custom printed tote bag.
+                        Create your own custom printed tote bag or choose from one of our pre-made designs.
                         Upload an image to be printed on the front of the bag.
                     </p>
                 </div>
