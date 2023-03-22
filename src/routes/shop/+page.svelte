@@ -17,7 +17,7 @@ import Alert from "$lib/components/Alert.svelte";
             <!--     <ShopSectionCountdown date="2022-12-25 09:30:00" style="grid-column: span 2"/> -->
             <!-- </div> -->
             <ShopCard title="Light Box Bundle" link="/shop/product/lightbox" columns="2">
-                <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £16.99</span>
+                <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £15.00</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
                     <img src="/images/lightbox/demo1.jpg" alt="Light Box" class="product-image"/>
                     <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>

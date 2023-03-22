@@ -32,7 +32,7 @@
             <div class="w-full flex flex-col justify-center items-center gap-4">
                 <div class="max-w-sm md:max-w-xl">
                     <ShopCard title="Light Box Bundle" link="/shop/product/lightbox">
-                        <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £16.99</span>
+                        <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £15.00</span>
                         <div slot="header" class="flex flex-row justify-center h-48 rounded-lg">
                             <img src="/images/lightbox/demo1.jpg" alt="Light Box" class="product-image"/>
                             <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>

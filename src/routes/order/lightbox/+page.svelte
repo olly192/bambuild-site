@@ -11,7 +11,8 @@
         Carousel = module.default;
     });
 
-    let insertCode = "pre-order" // TODO: Change this after pre-orders are over
+    let insertCode = "custom" // TODO: Change this after pre-orders are over
+    let customInsert
     let frontText = "Your Text Here"
     let rightText = "Right End"
     let leftText = "Left End"
@@ -46,9 +47,9 @@
         //     'image': '/images/lightbox/demo2.jpg',
         //     'name': 'Insert 2'
         // }
-        'pre-order': {
+        'custom': {
             'image': '',
-            'name': 'Select an insert after pre-orders have finished'
+            'name': 'Upload a custom image'
         }
     }
 
@@ -84,14 +85,32 @@
     }
 
     function submitOrder() {
-        let data = formatData()
-        let endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/bundle`
+        let formData = new FormData()
+        let endpoint
+        if (customInsert) {
+            endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/image-bundle`
+            formData.append("image", customInsert[0])
+        } else {
+            endpoint = `${env.PUBLIC_API_URL}/api/order-lightbox/bundle`
+        }
+        formData.append("engravings", JSON.stringify({
+            "front": frontTextToggle ? frontText : "",
+            "right": rightTextToggle ? rightText : "",
+            "left": leftTextToggle ? leftText : "",
+            "back": backTextToggle ? backText : ""
+        }))
+        formData.append("insertCode", insertCode)
+        formData.append("instructions", "")
+        formData.append("email", email)
+        formData.append("firstName", firstName)
+        formData.append("lastName", lastName)
+        formData.append("shippingMethod", shippingMethod)
+        formData.append("shippingDetails", shippingMethod === "0" ? `Deliver to ${shippingName}, Room ${shippingForm}` : "Delivery")
+        formData.append("paymentMethod", paymentMethod)
+
         fetch(endpoint, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
+            body: formData
         }).then(res => {
             if (res.status === 200) {
                 res.json().then(data => {
@@ -175,6 +194,18 @@
                             </label>
                         {/each}
                     </div>
+
+                    {#if insertCode === "custom"}
+                        <h2 class="heading-2 mt-4">Custom Insert</h2>
+                        <div class="mt-2">
+                            <div class="preview-image">
+                                {#if customInsert}
+                                    <img src={URL.createObjectURL(customInsert[0])} alt="Custom Image" />
+                                {/if}
+                            </div>
+                            <input class="mt-2" type="file" accept="image/*" id="file" bind:files={customInsert}>
+                        </div>
+                    {/if}
 
                     <h3 class="heading-3">Customise Engravings</h3>
 
