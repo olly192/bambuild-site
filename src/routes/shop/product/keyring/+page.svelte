@@ -43,10 +43,6 @@
         <div id="options-container">
             <div id="options-card">
                 <div>
-                    <Alert color="warning">
-                        <p class="font-bold">Currently on pre-order</p>
-                        <p>Expected delivery date: 01/02/2023</p>
-                    </Alert>
                     <h3 class="heading-3">Description</h3>
                     <p>
                         Choose your own image to be engraved onto a keyring.

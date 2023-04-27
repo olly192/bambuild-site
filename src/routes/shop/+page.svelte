@@ -7,9 +7,6 @@ import Alert from "$lib/components/Alert.svelte";
 
 <ContentWrapper>
     <h1 class="heading-1">Shop</h1>
-    <Alert color="info" dismissable>
-        <span class="font-medium">Early bird pricing!</span> Buy now at a discounted rate - prices subject to change
-    </Alert>
     <h2 class="heading-2 mb-4">Light Box Bundles</h2>
     <div class="flex justify-center">
         <div class="shop-card-wrapper">
