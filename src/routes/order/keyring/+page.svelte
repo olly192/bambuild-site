@@ -16,14 +16,35 @@
     let orderNumber = ""
     let step = 0
 
+    let imageCode
 
     $: if (image) {
         console.log(image[0])
     }
 
+    let imageData = {
+        'face-sunglasses': { 'image': '/images/keyring/keyring1.jpeg', 'name': 'Sunglasses' },
+        'face-stars': { 'image': '/images/keyring/keyring12.jpeg', 'name': 'Star Eyes' },
+        'heart-plain': { 'image': '/images/keyring/keyring2.jpeg', 'name': 'Heart' },
+        'continent-africa': { 'image': '/images/keyring/keyring6.jpeg', 'name': 'Africa' },
+        'continent-america': { 'image': '/images/keyring/keyring7.jpeg', 'name': 'America' },
+        'continent-europe': { 'image': '/images/keyring/keyring8.jpeg', 'name': 'Europe' },
+        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1' },
+        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2' },
+        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3' },
+        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit' },
+        'starsign-scorpio': { 'image': '/images/keyring/keyring10.jpeg', 'name': 'Scorpio' },
+        'bambuild-circle': { 'image': '/images/keyring/keyring9.jpeg', 'name': 'BamBuild Circle' },
+        'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
+        'custom': {
+            'image': '/images/totebag/blank.jpeg',
+            'name': 'Create Your Own Design'
+        }
+    }
+
     function submitOrder() {
         let formData = new FormData()
-        formData.append("image", image[0])
+        formData.append("design", imageCode)
         formData.append("instructions", instructions)
         formData.append("email", email)
         formData.append("firstName", firstName)
@@ -32,7 +53,11 @@
         formData.append("shippingDetails", shippingMethod === "0" ? `Deliver to ${shippingName}, Room ${shippingForm}` : "Delivery")
         formData.append("paymentMethod", paymentMethod)
 
-        let endpoint = `${env.PUBLIC_API_URL}/api/order-image/keyring`
+        let endpoint = `${env.PUBLIC_API_URL}/api/order/keyring`
+        if (imageCode === "custom") {
+            formData.append("image", image[0])
+            endpoint = `${env.PUBLIC_API_URL}/api/order-image/keyring`
+        }
         console.log("Sending to", endpoint)
         fetch(endpoint, {
             method: "POST",
@@ -69,14 +94,30 @@
             <div class="order-card">
                 <h1 class="heading-1 mb-0">Order Details</h1>
                 <h2 class="heading-2 mt-4">Image</h2>
-                <div class="mt-2">
-                    {#if image}
-                        <img src={URL.createObjectURL(image[0])} alt="Custom Image" class="w-full h-max-[80vh]" />
-                    {:else}
-                        <ImagePlaceholder />
-                    {/if}
-                    <input class="mt-2" type="file" accept="image/*" id="file" bind:files={image}>
+                <div id="image-selection">
+                    {#each Object.entries(imageData) as [name, data]}
+                        <input class="hidden" type="radio" bind:group={imageCode} value={name} id={name}>
+                        <label for={name}>
+                            {#if data.image}
+                                <img src={data.image}>
+                            {/if}
+                            <span class:mt-1={data.image} class:my-4={!data.image}>{data.name}</span>
+                        </label>
+                    {/each}
                 </div>
+
+                {#if imageCode === "custom"}
+                    <h2 class="heading-2 mt-4">Custom Keyring</h2>
+                    <div class="mt-2">
+                        <div id="keyring-preview">
+                            {#if image}
+                                <img src={URL.createObjectURL(image[0])} alt="Custom Image" class="keyring-image" />
+                            {/if}
+                            <img src="/images/keyring/keyring-template.jpeg" alt="Blank Keyring" class="keyring-template">
+                        </div>
+                        <input class="mt-2" type="file" accept="image/*" id="file" bind:files={image}>
+                    </div>
+                {/if}
 
                 <label class="w-full mt-2 text-sm font-medium text-white">Additional Instructions
                     <input type="text" bind:value={instructions} placeholder="Additional Instructions">
@@ -143,7 +184,8 @@
                                     && lastName
                                     && ((shippingMethod === "0" && shippingName && shippingForm) || shippingMethod === "1")
                                     && paymentMethod
-                                    && image
+                                    && imageCode
+                                    && imageCode !== "custom" || image
                                 )
                             }>
                         Next <i class="ml-2 fas fa-arrow-right"></i>
@@ -215,6 +257,47 @@
 </ContentWrapper>
 
 <style>
+#image-selection {
+    @apply grid grid-cols-2 md:grid-cols-4 gap-4 mb-4;
+}
+
+#image-selection > label {
+    @apply w-full p-2 pb-1 border bg-gray-800 border-gray-700 rounded-lg shadow-md;
+    @apply flex flex-col items-center;
+    @apply cursor-pointer;
+    @apply transition-colors duration-200 ease-in-out;
+}
+
+#image-selection > label:hover {
+    @apply bg-gray-700 border-gray-600;
+}
+
+#image-selection > input:checked + label {
+    @apply bg-gray-600 border-gray-500;
+}
+
+#image-selection > label > img {
+    @apply rounded object-cover;
+}
+
+#image-selection > input {
+    @apply hidden;
+}
+
+#keyring-preview {
+    @apply relative w-full h-[50vmin];
+    @apply flex flex-col justify-center items-center;
+}
+
+#keyring-preview > img.keyring-template {
+    @apply h-[50vmin] rounded-lg object-cover;
+}
+
+#keyring-preview > img.keyring-image {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+    @apply h-[20vmin] w-[20vmin] rounded-lg object-cover;
+}
+
 .card-container {
     @apply w-full flex flex-col justify-center items-center;
     min-height: 75vmin;

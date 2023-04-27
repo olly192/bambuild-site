@@ -27,6 +27,17 @@
                 <img class="preview-image" src="/images/keyring/keyring1.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring2.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring3.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring4.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring5.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring6.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring7.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring8.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring9.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring10.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring11.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring12.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring13.jpeg">
+                <img class="preview-image" src="/images/keyring/keyring14.jpeg">
             </svelte:component>
         </div>
         <div id="options-container">

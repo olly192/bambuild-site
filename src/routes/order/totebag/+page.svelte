@@ -108,7 +108,7 @@
                 {#if imageCode === "custom"}
                     <h2 class="heading-2 mt-4">Custom Totebag</h2>
                     <div class="mt-2">
-                        <div id="bag-preview">
+                        <div id="keyring-preview">
                             <img src="/images/totebag/blank.jpeg" alt="Tote Bag" class="preview-bag" />
                             <div class="preview-image">
                                 {#if image}
