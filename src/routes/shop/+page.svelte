@@ -51,9 +51,9 @@ import Alert from "$lib/components/Alert.svelte";
             <ShopCard title="Custom Keyrings" link="/shop/product/keyring" columns="2">
                 <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
-                    <img src="/images/keyring/keyring1.jpeg" alt="Light Box" class="product-image"/>
-                    <img src="/images/keyring/keyring2.jpeg" alt="Light Box" class="product-image"/>
-                    <img src="/images/keyring/keyring3.jpeg" alt="Light Box" class="hidden md:block product-image"/>
+                    <img src="/images/keyring/keyring9.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/keyring/keyring12.jpeg" alt="Light Box" class="product-image"/>
+                    <img src="/images/keyring/keyring14.jpeg" alt="Light Box" class="hidden md:block product-image"/>
                 </div>
                 <p>Create your own custom engraved keyring.</p>
             </ShopCard>

@@ -37,7 +37,7 @@
         'bambuild-circle': { 'image': '/images/keyring/keyring9.jpeg', 'name': 'BamBuild Circle' },
         'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
         'custom': {
-            'image': '/images/totebag/blank.jpeg',
+            'image': '/images/keyring/keyring-template.jpeg',
             'name': 'Create Your Own Design'
         }
     }
