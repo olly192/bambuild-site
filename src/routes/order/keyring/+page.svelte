@@ -25,10 +25,10 @@
     let imageData = {
         'face-sunglasses': { 'image': '/images/keyring/keyring1.jpeg', 'name': 'Sunglasses (Small)' },
         'face-stars': { 'image': '/images/keyring/keyring12.jpeg', 'name': 'Star Eyes (Small)' },
-        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1 (Small)' },
-        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2 (Small)' },
-        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3 (Small)' },
-        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit (Small)' },
+        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1 (Large)' },
+        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2 (Large)' },
+        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3 (Large)' },
+        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit (Large)' },
         'heart-plain': { 'image': '/images/keyring/keyring2.jpeg', 'name': 'Heart' },
         'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
 
