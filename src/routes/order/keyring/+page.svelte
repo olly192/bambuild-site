@@ -29,7 +29,6 @@
         'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2 (Large)' },
         'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3 (Large)' },
         'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit (Large)' },
-        'heart-plain': { 'image': '/images/keyring/keyring2.jpeg', 'name': 'Heart' },
         'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
 
         'bambuild-circle': { 'image': '/images/keyring-render/bambuild-circle.png', 'name': 'BamBuild Circle (Large)' },
