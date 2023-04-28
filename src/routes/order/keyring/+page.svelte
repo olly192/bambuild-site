@@ -36,6 +36,7 @@
         'continent-africa-large': { 'image': '/images/keyring-render/continent/africa-large.png', 'name': 'Africa (Large)' },
         'continent-africa-small': { 'image': '/images/keyring-render/continent/africa-small.png', 'name': 'Africa (Small)' },
         'continent-america-large': { 'image': '/images/keyring-render/continent/america-large.png', 'name': 'America (Large)' },
+        'continent-america-small': { 'image': '/images/keyring-render/continent/america-small.png', 'name': 'America (Small)' },
         'continent-europe-large': { 'image': '/images/keyring-render/continent/europe-large.png', 'name': 'Europe (Large)' },
         'continent-europe-small': { 'image': '/images/keyring-render/continent/europe-small.png', 'name': 'Europe (Small)' },
         'continent-asia-large': { 'image': '/images/keyring-render/continent/asia-large.png', 'name': 'Asia (Large)' },
