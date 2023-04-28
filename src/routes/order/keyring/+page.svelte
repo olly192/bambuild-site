@@ -1,7 +1,6 @@
 <script>
     import ContentWrapper from "$lib/components/ContentWrapper.svelte";
     import { env } from "$env/dynamic/public";
-    import ImagePlaceholder from "$lib/components/ImagePlaceholder.svelte";
 
     let image
     let email = ""
@@ -12,7 +11,7 @@
     let shippingName
     let shippingForm
     let paymentMethod
-    $: emailValid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/g.test(email)
+    $: emailValid = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/g.test(email)
     let orderNumber = ""
     let step = 0
 
@@ -111,7 +110,7 @@
             } else {
                 step = 1
             }
-        }).catch(err => {
+        }).catch(() => {
             step = 1
         })
     }
