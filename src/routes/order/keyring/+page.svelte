@@ -22,44 +22,64 @@
         console.log(image[0])
     }
 
-    let imageData = {
-        'face-sunglasses': { 'image': '/images/keyring/keyring1.jpeg', 'name': 'Sunglasses (Small)' },
-        'face-stars': { 'image': '/images/keyring/keyring12.jpeg', 'name': 'Star Eyes (Small)' },
-        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1 (Large)' },
-        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2 (Large)' },
-        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3 (Large)' },
-        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit (Large)' },
-        'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
-
-        'bambuild-circle': { 'image': '/images/keyring-render/bambuild-circle.png', 'name': 'BamBuild Circle (Large)' },
-
-        'continent-africa-large': { 'image': '/images/keyring-render/continent/africa-large.png', 'name': 'Africa (Large)' },
-        'continent-africa-small': { 'image': '/images/keyring-render/continent/africa-small.png', 'name': 'Africa (Small)' },
-        'continent-america-large': { 'image': '/images/keyring-render/continent/america-large.png', 'name': 'America (Large)' },
-        'continent-america-small': { 'image': '/images/keyring-render/continent/america-small.png', 'name': 'America (Small)' },
-        'continent-europe-large': { 'image': '/images/keyring-render/continent/europe-large.png', 'name': 'Europe (Large)' },
-        'continent-europe-small': { 'image': '/images/keyring-render/continent/europe-small.png', 'name': 'Europe (Small)' },
-        'continent-asia-large': { 'image': '/images/keyring-render/continent/asia-large.png', 'name': 'Asia (Large)' },
-        'continent-australasia-large': { 'image': '/images/keyring-render/continent/australasia-large.png', 'name': 'Australasia (Large)' },
-
-        'starsign-aquarius': { 'image': '/images/keyring-render/starsign/aquarius.png', 'name': 'Aquarius' },
-        'starsign-aries': { 'image': '/images/keyring-render/starsign/aries.png', 'name': 'Aries' },
-        'starsign-cancer': { 'image': '/images/keyring-render/starsign/cancer.png', 'name': 'Cancer' },
-        'starsign-capricorn': { 'image': '/images/keyring-render/starsign/capricorn.png', 'name': 'Capricorn' },
-        'starsign-gemini': { 'image': '/images/keyring-render/starsign/gemini.png', 'name': 'Gemini' },
-        'starsign-leo': { 'image': '/images/keyring-render/starsign/leo.png', 'name': 'Leo' },
-        'starsign-libra': { 'image': '/images/keyring-render/starsign/libra.png', 'name': 'Libra' },
-        'starsign-pisces': { 'image': '/images/keyring-render/starsign/pisces.png', 'name': 'Pisces' },
-        'starsign-sagittarius': { 'image': '/images/keyring-render/starsign/sagittarius.png', 'name': 'Sagittarius' },
-        'starsign-scorpio': { 'image': '/images/keyring-render/starsign/scorpio.png', 'name': 'Scorpio' },
-        'starsign-taurus': { 'image': '/images/keyring-render/starsign/taurus.png', 'name': 'Taurus' },
-        'starsign-virgo': { 'image': '/images/keyring-render/starsign/virgo.png', 'name': 'Virgo' },
-
-        'custom': {
-            'image': '/images/keyring/keyring-template.jpeg',
-            'name': 'Create Your Own Design'
+    let imageData = [
+        {
+            'name': 'BamBuild',
+            'items': {
+                'custom': { 'image': '/images/keyring-render/blank.png', 'name': 'Custom Keyring', 'large': true},
+                'bambuild-circle': { 'image': '/images/keyring-render/bambuild-circle.png', 'name': 'BamBuild Circle', 'large': true},
+                'bambuild-heart': { 'image': '/images/keyring-render/bambuild-heart.png', 'name': 'BamBuild Heart', 'large': true}
+            }
+        },
+        {
+            'name': 'Summer',
+            'items': {
+                'flower1': { 'image': '/images/keyring-render/summer/flower1.png', 'name': 'Flower 1', 'large': true},
+                'flower2': { 'image': '/images/keyring-render/summer/flower2.png', 'name': 'Flower 2', 'large': true},
+                'flower3': { 'image': '/images/keyring-render/summer/flower3.png', 'name': 'Flower 3', 'large': true},
+                'rabbit': { 'image': '/images/keyring-render/summer/rabbit.png', 'name': 'Rabbit', 'large': true}
+            }
+        },
+        {
+            'name': 'Continents',
+            'items': {
+                'continent-africa-large': { 'image': '/images/keyring-render/continent/africa-large.png', 'name': 'Africa', 'large': true},
+                'continent-africa-small': { 'image': '/images/keyring-render/continent/africa-small.png', 'name': 'Africa', 'large': false},
+                'continent-america-large': { 'image': '/images/keyring-render/continent/america-large.png', 'name': 'America', 'large': true},
+                'continent-america-small': { 'image': '/images/keyring-render/continent/america-small.png', 'name': 'America', 'large': false},
+                'continent-europe-large': { 'image': '/images/keyring-render/continent/europe-large.png', 'name': 'Europe', 'large': true},
+                'continent-europe-small': { 'image': '/images/keyring-render/continent/europe-small.png', 'name': 'Europe', 'large': false},
+                'continent-asia-large': { 'image': '/images/keyring-render/continent/asia-large.png', 'name': 'Asia', 'large': true},
+                'continent-australasia-large': { 'image': '/images/keyring-render/continent/australasia-large.png', 'name': 'Australasia', 'large': true}
+            }
+        },
+        {
+            'name': 'Faces',
+            'items': {
+                'face-sunglasses': { 'image': '/images/keyring-render/emoji/sunglasses.png', 'name': 'Sunglasses Emoji', 'large': false},
+                'face-stars': { 'image': '/images/keyring-render/emoji/star.png', 'name': 'Star Eyes Emoji', 'large': false},
+                'face-tongue': { 'image': '/images/keyring-render/emoji/tongue.png', 'name': 'Tongue Emoji', 'large': false},
+                'face-heart': { 'image': '/images/keyring-render/emoji/heart.png', 'name': 'Heart Eyes Emoji', 'large': false}
+            }
+        },
+        {
+            'name': 'Star Signs',
+            'items': {
+                'starsign-aquarius': { 'image': '/images/keyring-render/starsign/aquarius.png', 'name': 'Aquarius', 'large': false},
+                'starsign-aries': { 'image': '/images/keyring-render/starsign/aries.png', 'name': 'Aries', 'large': false},
+                'starsign-cancer': { 'image': '/images/keyring-render/starsign/cancer.png', 'name': 'Cancer', 'large': false},
+                'starsign-capricorn': { 'image': '/images/keyring-render/starsign/capricorn.png', 'name': 'Capricorn', 'large': false},
+                'starsign-gemini': { 'image': '/images/keyring-render/starsign/gemini.png', 'name': 'Gemini', 'large': false},
+                'starsign-leo': { 'image': '/images/keyring-render/starsign/leo.png', 'name': 'Leo', 'large': false},
+                'starsign-libra': { 'image': '/images/keyring-render/starsign/libra.png', 'name': 'Libra', 'large': false},
+                'starsign-pisces': { 'image': '/images/keyring-render/starsign/pisces.png', 'name': 'Pisces', 'large': false},
+                'starsign-sagittarius': { 'image': '/images/keyring-render/starsign/sagittarius.png', 'name': 'Sagittarius', 'large': false},
+                'starsign-scorpio': { 'image': '/images/keyring-render/starsign/scorpio.png', 'name': 'Scorpio', 'large': false},
+                'starsign-taurus': { 'image': '/images/keyring-render/starsign/taurus.png', 'name': 'Taurus', 'large': false},
+                'starsign-virgo': { 'image': '/images/keyring-render/starsign/virgo.png', 'name': 'Virgo', 'large': false}
+            }
         }
-    }
+    ]
 
     function submitOrder() {
         let formData = new FormData()
@@ -113,17 +133,25 @@
             <div class="order-card">
                 <h1 class="heading-1 mb-0">Order Details</h1>
                 <h2 class="heading-2 mt-4">Image</h2>
-                <div id="image-selection">
-                    {#each Object.entries(imageData) as [name, data]}
-                        <input class="hidden" type="radio" bind:group={imageCode} value={name} id={name}>
-                        <label for={name}>
-                            {#if data.image}
-                                <img src={data.image}>
-                            {/if}
-                            <span class:mt-1={data.image} class:my-4={!data.image}>{data.name}</span>
-                        </label>
-                    {/each}
-                </div>
+                {#each imageData as category}
+                    <h3 class="heading-3 mt-4">{category.name}</h3>
+                    <div id="image-selection">
+                        {#each Object.entries(category.items) as [name, data]}
+                            <input class="hidden" type="radio" bind:group={imageCode} value={name} id={name}>
+                            <label for={name}>
+                                {#if data.image}
+                                    <img src={data.image}>
+                                {/if}
+                                <span class:mt-1={data.image} class:my-4={!data.image}>{data.name}</span>
+                                {#if data.large}
+                                    <span class="text-xs text-slate-400">Large (£2.50)</span>
+                                {:else}
+                                    <span class="text-xs text-slate-400">Small (£2)</span>
+                                {/if}
+                            </label>
+                        {/each}
+                    </div>
+                {/each}
 
                 {#if imageCode === "custom"}
                     <h2 class="heading-2 mt-4">Custom Keyring</h2>

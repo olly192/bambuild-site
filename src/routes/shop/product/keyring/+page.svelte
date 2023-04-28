@@ -1,9 +1,8 @@
 <script>
     import ContentWrapper from "$lib/components/ContentWrapper.svelte";
-    import Alert from "$lib/components/Alert.svelte";
 
     import {onMount} from "svelte";
-    import ImagePlaceholder from "$lib/components/ImagePlaceholder.svelte";
+
     let Carousel;
     onMount(async () => {
         const module = await import('svelte-carousel');
@@ -25,16 +24,13 @@
                 pauseOnFocus
             >
                 <img class="preview-image" src="/images/keyring/keyring9.jpeg">
-                <img class="preview-image" src="/images/keyring/keyring1.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring4.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring5.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring10.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring6.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring7.jpeg">
-                <img class="preview-image" src="/images/keyring/keyring2.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring8.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring11.jpeg">
-                <img class="preview-image" src="/images/keyring/keyring3.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring12.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring13.jpeg">
                 <img class="preview-image" src="/images/keyring/keyring14.jpeg">
