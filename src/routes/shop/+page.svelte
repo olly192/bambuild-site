@@ -1,8 +1,6 @@
 <script>
 import ContentWrapper from "$lib/components/ContentWrapper.svelte";
 import ShopCard from "$lib/components/ShopCard.svelte";
-import ShopCardCountdown from "$lib/components/ShopCardCountdown.svelte";
-import Alert from "$lib/components/Alert.svelte";
 </script>
 
 <ContentWrapper>
