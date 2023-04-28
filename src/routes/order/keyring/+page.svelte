@@ -23,19 +23,38 @@
     }
 
     let imageData = {
-        'face-sunglasses': { 'image': '/images/keyring/keyring1.jpeg', 'name': 'Sunglasses' },
-        'face-stars': { 'image': '/images/keyring/keyring12.jpeg', 'name': 'Star Eyes' },
+        'face-sunglasses': { 'image': '/images/keyring/keyring1.jpeg', 'name': 'Sunglasses (Small)' },
+        'face-stars': { 'image': '/images/keyring/keyring12.jpeg', 'name': 'Star Eyes (Small)' },
+        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1 (Small)' },
+        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2 (Small)' },
+        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3 (Small)' },
+        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit (Small)' },
         'heart-plain': { 'image': '/images/keyring/keyring2.jpeg', 'name': 'Heart' },
-        'continent-africa': { 'image': '/images/keyring/keyring6.jpeg', 'name': 'Africa' },
-        'continent-america': { 'image': '/images/keyring/keyring7.jpeg', 'name': 'America' },
-        'continent-europe': { 'image': '/images/keyring/keyring8.jpeg', 'name': 'Europe' },
-        'flower1': { 'image': '/images/keyring/keyring4.jpeg', 'name': 'Flower 1' },
-        'flower2': { 'image': '/images/keyring/keyring5.jpeg', 'name': 'Flower 2' },
-        'flower3': { 'image': '/images/keyring/keyring14.jpeg', 'name': 'Flower 3' },
-        'rabbit': { 'image': '/images/keyring/keyring11.jpeg', 'name': 'Rabbit' },
-        'starsign-scorpio': { 'image': '/images/keyring/keyring10.jpeg', 'name': 'Scorpio' },
-        'bambuild-circle': { 'image': '/images/keyring/keyring9.jpeg', 'name': 'BamBuild Circle' },
         'bambuild-heart': { 'image': '/images/keyring/keyring13.jpeg', 'name': 'BamBuild Heart' },
+
+        'bambuild-circle': { 'image': '/images/keyring-render/bambuild-circle.png', 'name': 'BamBuild Circle (Large)' },
+
+        'continent-africa-large': { 'image': '/images/keyring-render/continent/africa-large.png', 'name': 'Africa (Large)' },
+        'continent-africa-small': { 'image': '/images/keyring-render/continent/africa-small.png', 'name': 'Africa (Small)' },
+        'continent-america-large': { 'image': '/images/keyring-render/continent/america-large.png', 'name': 'America (Large)' },
+        'continent-europe-large': { 'image': '/images/keyring-render/continent/europe-large.png', 'name': 'Europe (Large)' },
+        'continent-europe-small': { 'image': '/images/keyring-render/continent/europe-small.png', 'name': 'Europe (Small)' },
+        'continent-asia-large': { 'image': '/images/keyring-render/continent/asia-large.png', 'name': 'Asia (Large)' },
+        'continent-australasia-large': { 'image': '/images/keyring-render/continent/australasia-large.png', 'name': 'Australasia (Large)' },
+
+        'starsign-aquarius': { 'image': '/images/keyring-render/starsign/aquarius.png', 'name': 'Aquarius' },
+        'starsign-aries': { 'image': '/images/keyring-render/starsign/aries.png', 'name': 'Aries' },
+        'starsign-cancer': { 'image': '/images/keyring-render/starsign/cancer.png', 'name': 'Cancer' },
+        'starsign-capricorn': { 'image': '/images/keyring-render/starsign/capricorn.png', 'name': 'Capricorn' },
+        'starsign-gemini': { 'image': '/images/keyring-render/starsign/gemini.png', 'name': 'Gemini' },
+        'starsign-leo': { 'image': '/images/keyring-render/starsign/leo.png', 'name': 'Leo' },
+        'starsign-libra': { 'image': '/images/keyring-render/starsign/libra.png', 'name': 'Libra' },
+        'starsign-pisces': { 'image': '/images/keyring-render/starsign/pisces.png', 'name': 'Pisces' },
+        'starsign-sagittarius': { 'image': '/images/keyring-render/starsign/sagittarius.png', 'name': 'Sagittarius' },
+        'starsign-scorpio': { 'image': '/images/keyring-render/starsign/scorpio.png', 'name': 'Scorpio' },
+        'starsign-taurus': { 'image': '/images/keyring-render/starsign/taurus.png', 'name': 'Taurus' },
+        'starsign-virgo': { 'image': '/images/keyring-render/starsign/virgo.png', 'name': 'Virgo' },
+
         'custom': {
             'image': '/images/keyring/keyring-template.jpeg',
             'name': 'Create Your Own Design'
@@ -258,7 +277,7 @@
 
 <style>
 #image-selection {
-    @apply grid grid-cols-2 md:grid-cols-4 gap-4 mb-4;
+    @apply grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-4;
 }
 
 #image-selection > label {
@@ -304,7 +323,7 @@
 }
 
 .order-card {
-    @apply max-w-4xl p-6 border bg-gray-800 border-gray-700 rounded-lg shadow-md;
+    @apply max-w-6xl p-6 border bg-gray-800 border-gray-700 rounded-lg shadow-md;
 }
 
 .order-confirmed-heading {
