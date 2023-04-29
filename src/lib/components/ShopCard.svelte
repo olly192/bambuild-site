@@ -8,6 +8,7 @@
     export let image = false
     export let small = false
     export let className = ""
+    export let linkText= "View Product"
 </script>
 
 <div class="rounded-lg shadow-md bg-gray-800 border-gray-700 flex flex-col justify-between max-w-2xl {className}" style="grid-column: span {columns}">
@@ -50,9 +51,9 @@
             {:else if smallLink}
                 <button disabled class="btn btn-sm btn-circle btn-primary"><i class="fas fa-arrow-right"></i></button>
             {:else if link}
-                <a href={link} class="btn btn-sm btn-primary">View Product <i class="fas fa-arrow-right ml-2"></i></a>
+                <a href={link} class="btn btn-sm btn-primary">{linkText} <i class="fas fa-arrow-right ml-2"></i></a>
             {:else}
-                <button disabled class="btn btn-sm btn-primary">View Product <i class="fas fa-arrow-right ml-2"></i></button>
+                <button disabled class="btn btn-sm btn-primary">{linkText} <i class="fas fa-arrow-right ml-2"></i></button>
             {/if}
         </div>
     </div>

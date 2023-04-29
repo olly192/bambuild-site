@@ -38,9 +38,7 @@
                     </p>
                 </div>
                 <div>
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">
-                        <s class="text-red-400 font-thin">£6.99</s> £5
-                    </span>
+                    <span class="text-3xl font-bold text-gray-900 dark:text-white">£5</span>
                     <div class="w-full flex flex-row justify-around mt-4 gap-4">
                         <a class="btn btn-primary" href="/order/totebag">
                             <i class="mr-2 fas fa-cart-plus"></i> Customise

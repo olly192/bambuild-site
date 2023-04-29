@@ -46,9 +46,7 @@
                     </p>
                 </div>
                 <div>
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">
-                        <s class="text-red-400 font-thin">£19.99</s> £15.00
-                    </span>
+                    <span class="text-3xl font-bold text-gray-900 dark:text-white">£15.00</span>
                     <div class="w-full flex flex-row justify-around mt-4 gap-4">
                         <a class="btn btn-primary" href="/order/lightbox">
                             <i class="mr-2 fas fa-cart-plus"></i> Customise

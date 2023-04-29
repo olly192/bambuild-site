@@ -274,10 +274,10 @@
                     Your email will be used to confirm your customisation options and to contact you with any updates with your order.
                 </span>
 
-                <h2 class="heading-2 mt-4">Shipping</h2>
-                <label class="w-full mt-2 text-sm font-medium text-white">Shipping Method
+                <h2 class="heading-2 mt-4">Delivery</h2>
+                <label class="w-full mt-2 text-sm font-medium text-white">Delivery Method
                     <select bind:value={shippingMethod}>
-                        <option selected disabled>Select a shipping method</option>
+                        <option selected disabled>Select a delivery method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
                         <option value="1">Royal Mail (+£3.00)</option>
                     </select>

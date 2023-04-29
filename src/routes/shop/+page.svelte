@@ -1,18 +1,18 @@
 <script>
 import ContentWrapper from "$lib/components/ContentWrapper.svelte";
 import ShopCard from "$lib/components/ShopCard.svelte";
+import ShopSectionCountdown from "$lib/components/ShopSectionCountdown.svelte";
 </script>
 
 <ContentWrapper>
     <h1 class="heading-1">Shop</h1>
-    <h2 class="heading-2 mb-4">Light Box Bundles</h2>
+    <div class="my-4 flex flex-col md:flex-row justify-between items-center">
+        <h2 class="heading-2">Light Box</h2>
+    </div>
     <div class="flex justify-center">
         <div class="shop-card-wrapper">
-            <!-- <div style="grid-column: span 4"> -->
-            <!--     <ShopSectionCountdown date="2022-12-25 09:30:00" style="grid-column: span 2"/> -->
-            <!-- </div> -->
             <ShopCard title="Light Box Bundle" link="/shop/product/lightbox" columns="2">
-                <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £15.00</span>
+                <span slot="price">£15</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
                     <img src="/images/lightbox/demo1.jpg" alt="Light Box" class="product-image"/>
                     <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>
@@ -20,11 +20,21 @@ import ShopCard from "$lib/components/ShopCard.svelte";
                 </div>
                 <p>The BamBuild light box bundle includes our self-assembled light box (with optional personalised engraving), an acrylic insert of your choice, LEDs and a battery box (3 AA batteries not included)</p>
             </ShopCard>
-            <!-- <ShopCard title="Premium Light Box Bundle" columns="2"> -->
-            <!--     <span slot="price">£24.99</span> -->
-            <!--     <ShopCardCountdown slot="header"/> -->
-            <!--     Our premium light box. Coming soon... -->
-            <!-- </ShopCard> -->
+            <ShopCard title="Light Box Replacement Parts" link="mailto:support@bambuild.ml?subject=Replacement%20Parts%20Order" columns="2" linkText="Contact Us">
+                <span slot="price">£1 - £5</span>
+                <div slot="header" class="flex flex-row h-48 rounded-lg">
+                    <img src="/images/lightbox/replacement1.png" alt="Light Box" class="product-image"/>
+                    <img src="/images/lightbox/replacement2.png" alt="Light Box" class="product-image"/>
+                    <img src="/images/lightbox/replacement3.png" alt="Light Box" class="hidden md:block product-image"/>
+                </div>
+                <p>
+                    Please contact us at
+                    <a class="text-primary-500 font-bold" href="mailto:support@bambuild.ml?subject=Replacement%20Parts%20Order">
+                        support@bambuild.ml
+                    </a>
+                    to purchase replacement light box parts.
+                </p>
+            </ShopCard>
         </div>
     </div>
 
@@ -35,7 +45,7 @@ import ShopCard from "$lib/components/ShopCard.svelte";
     <div class="flex justify-center">
         <div class="shop-card-wrapper">
             <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" columns="2">
-                <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
+                <span slot="price">£5</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
                     <img src="/images/totebag/totebag1.jpeg" alt="Light Box" class="product-image"/>
                     <img src="/images/totebag/totebag2.jpeg" alt="Light Box" class="product-image"/>
@@ -44,7 +54,7 @@ import ShopCard from "$lib/components/ShopCard.svelte";
                 <p>Create your own custom printed tote bag.</p>
             </ShopCard>
             <ShopCard title="Custom Keyrings" link="/shop/product/keyring" columns="2">
-                <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+                <span slot="price">£2 - £2.50</span>
                 <div slot="header" class="flex flex-row h-48 rounded-lg">
                     <img src="/images/keyring/keyring9.jpeg" alt="Light Box" class="product-image"/>
                     <img src="/images/keyring/keyring12.jpeg" alt="Light Box" class="product-image"/>
@@ -55,37 +65,6 @@ import ShopCard from "$lib/components/ShopCard.svelte";
         </div>
     </div>
 
-    <!-- <div class="my-4 flex flex-col md:flex-row justify-between items-center"> -->
-    <!--     <h2 class="heading-2">Acrylic Inserts</h2> -->
-    <!--     <a disabled class="btn btn-sm btn-primary mt-2 md:mt-0">View All Inserts <i class="fas fa-arrow-right ml-2"></i></a> -->
-    <!-- </div> -->
-    <!-- <div class="shop-card-wrapper wrapper-small"> -->
-        <!-- <div style="grid-column: span 4"> -->
-        <!--     <ShopSectionCountdown style="grid-column: span 2"/> -->
-        <!-- </div> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-        <!-- <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-        <!--     <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-        <!--     Hello World -->
-        <!-- </ShopCard> -->
-    <!-- </div> -->
-
-    <!-- <h2 class="heading-2 my-4">Replacement Parts</h2> -->
-    <!-- <div class="shop-card-wrapper wrapper-small"> -->
-    <!--     <div style="grid-column: span 4"> -->
-    <!--         <ShopSectionCountdown style="grid-column: span 2"/> -->
-    <!--     </div> -->
-    <!-- </div> -->
 
 </ContentWrapper>
 

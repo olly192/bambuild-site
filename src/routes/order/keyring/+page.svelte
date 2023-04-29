@@ -33,9 +33,9 @@
         {
             'name': 'Summer',
             'items': {
-                'flower1': { 'image': '/images/keyring-render/summer/flower1.png', 'name': 'Flower 1', 'large': true},
-                'flower2': { 'image': '/images/keyring-render/summer/flower2.png', 'name': 'Flower 2', 'large': true},
-                'flower3': { 'image': '/images/keyring-render/summer/flower3.png', 'name': 'Flower 3', 'large': true},
+                'daffodill': { 'image': '/images/keyring-render/summer/daffodill.png', 'name': 'Daffodill', 'large': true},
+                'sunflower': { 'image': '/images/keyring-render/summer/sunflower.png', 'name': 'Sunflower', 'large': true},
+                'rose': { 'image': '/images/keyring-render/summer/rose.png', 'name': 'Rose', 'large': true},
                 'rabbit': { 'image': '/images/keyring-render/summer/rabbit.png', 'name': 'Rabbit', 'large': true}
             }
         },
@@ -185,10 +185,10 @@
                     Your email will be used to confirm your customisation options and to contact you with any updates with your order.
                 </span>
 
-                <h2 class="heading-2 mt-4">Shipping</h2>
-                <label class="w-full mt-2 text-sm font-medium text-white">Shipping Method
+                <h2 class="heading-2 mt-4">Delivery</h2>
+                <label class="w-full mt-2 text-sm font-medium text-white">Delivery Method
                     <select bind:value={shippingMethod}>
-                        <option selected disabled>Select a shipping method</option>
+                        <option selected disabled>Select a delivery method</option>
                         <option value="0">In Person - Only available for CSGS students</option>
                         <option value="1">Royal Mail (+£3.00)</option>
                     </select>
@@ -340,8 +340,8 @@
 }
 
 #keyring-preview > img.keyring-image {
-    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
-    @apply h-[20vmin] w-[20vmin] rounded-lg object-cover;
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[30%];
+    @apply h-[25vmin] w-[25vmin] rounded-lg object-cover;
 }
 
 .card-container {

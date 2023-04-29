@@ -41,13 +41,21 @@
                 <div>
                     <h3 class="heading-3">Description</h3>
                     <p>
-                        Choose your own image to be engraved onto a keyring.
+                        Purchase one of our premade keyrings, made from bamboo and birch plywood, or customise and make your own.
+                    </p>
+                    <br>
+                    <p>Our keyrings come in two sizes:</p>
+                    <ul>
+                        <li>• Large – 40mm in diameter - £2.50</li>
+                        <li>• Small – 35mm in diameter - £2.00</li>
+                    </ul>
+                    <br>
+                    <p>
+                        All our keyrings are laser cut from the two wood types, and come with a 20mm diameter metal keyring to attach them onto some of your personal items.
                     </p>
                 </div>
                 <div>
-                    <span class="text-3xl font-bold text-gray-900 dark:text-white">
-                        <s class="text-red-400 font-thin">£3.99</s> £2.50
-                    </span>
+                    <span class="text-3xl font-bold text-gray-900 dark:text-white">£2 - £2.50</span>
                     <div class="w-full flex flex-row justify-around mt-4 gap-4">
                         <a class="btn btn-primary" href="/order/keyring">
                             <i class="mr-2 fas fa-cart-plus"></i> Customise

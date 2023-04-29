@@ -31,7 +31,7 @@
             <div class="w-full flex flex-col justify-center items-center gap-4">
                 <div class="max-w-sm md:max-w-xl">
                     <ShopCard title="Light Box Bundle" link="/shop/product/lightbox">
-                        <span slot="price"><s class="text-red-400 font-thin">£19.99</s> £15.00</span>
+                        <span slot="price">£15</span>
                         <div slot="header" class="flex flex-row justify-center h-48 rounded-lg">
                             <img src="/images/lightbox/demo1.jpg" alt="Light Box" class="product-image"/>
                             <img src="/images/lightbox/demo2.jpg" alt="Light Box" class="product-image"/>
@@ -47,7 +47,7 @@
                 {#if windowWidth > 768}
                 <div class="max-w-xl md:min-w-[320px] flex flex-row gap-4">
                     <ShopCard title="Personalised Tote Bags" link="/shop/product/totebag" columns="2" smallLink>
-                        <span slot="price"><s class="text-red-400 font-thin">£6.99</s> £5</span>
+                        <span slot="price">£5</span>
                         <div slot="header" class="flex flex-row h-48 rounded-lg">
                             <img src="/images/totebag/totebag1.jpeg" alt="Light Box" class="product-image-half"/>
                             <img src="/images/totebag/totebag2.jpeg" alt="Light Box" class="product-image-half"/>
@@ -55,7 +55,7 @@
                         <p>Create your own custom printed tote bag.</p>
                     </ShopCard>
                     <ShopCard title="Custom Keyrings" link="/shop/product/keyring" columns="2" smallLink>
-                        <span slot="price"><s class="text-red-400 font-thin">£3.99</s> £2.50</span>
+                        <span slot="price">£2 - £2.50</span>
                         <div slot="header" class="flex flex-row h-48 rounded-lg">
                             <img src="/images/keyring/keyring9.jpeg" alt="Keyring" class="product-image-half"/>
                             <img src="/images/keyring/keyring12.jpeg" alt="Keyring" class="product-image-half"/>
@@ -65,78 +65,6 @@
                 </div>
                 {/if}
             </div>
-            <!-- <ShopSectionCountdown date="2022-12-25 09:30:00" style="grid-column: span 2"/> -->
-            <!-- <div class="product-wrapper"> -->
-            <!--     {#if windowWidth < 768} -->
-            <!--     <ShopCard title="Premium Light Box Bundle" price="£30" columns="1" small> -->
-            <!--         <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--         Hello World -->
-            <!--     </ShopCard> -->
-            <!--     <ShopCard title="Premium Light Box Bundle" price="£30" columns="1" small> -->
-            <!--         <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--         Hello World -->
-            <!--     </ShopCard> -->
-            <!--     {:else if windowWidth < 1024} -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--     {:else if windowWidth < 1280} -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="2"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="2"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--     {:else} -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="2"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="2"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00"/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--         <ShopCard title="Premium Light Box Bundle" price="£30" columns="1"> -->
-            <!--             <ShopCardCountdown slot="header" date="2022-12-25 09:30:00" small/> -->
-            <!--             Hello World -->
-            <!--         </ShopCard> -->
-            <!--     {/if} -->
-            <!-- </div> -->
         </div>
     </FullpageSection>
     <!-- <FullpageSection id="about" title="about" icon="fas fa-user-group" class="bg-primary-900"> -->
